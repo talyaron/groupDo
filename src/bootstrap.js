@@ -1,8 +1,8 @@
 // components
-import { Mooskal } from "./components/Mooskal/Mooskal";
-import { Invitation } from './components/Invitation/Invitation';
-import { Selection } from './components/Selection/Selection';
-import { Voting } from './components/Voting/Voting';
+import { Public } from "./Pages/Public/Public";
+import { Starts } from './Pages/Statrts/Starts';
+import { Groups } from './Pages/Groups/Groups';
+
 
 //Login
 
