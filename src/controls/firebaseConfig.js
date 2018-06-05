@@ -1,15 +1,20 @@
 import firebase from "firebase/app";
-import "firebase/database";
+import "firebase/firestore";
+
+
 
 firebase.initializeApp({
-    apiKey: "AIzaSyB9WWEP32uiDLC01nwGYrsUak-Tg96-l6M",
-    authDomain: "votewiz.firebaseapp.com",
-    databaseURL: "https://votewiz.firebaseio.com",
-    projectId: "votewiz",
-    storageBucket: "votewiz.appspot.com",
-    messagingSenderId: "315314502868"
+    apiKey: "AIzaSyAjyyjWM63PSjyRoDI-87MpRtfOFnOO0aA",
+    authDomain: "delib21-aaeb0.firebaseapp.com",
+    databaseURL: "https://delib21-aaeb0.firebaseio.com",
+    projectId: "delib21-aaeb0",
+    storageBucket: "delib21-aaeb0.appspot.com",
+    messagingSenderId: "845650714645"
+
 });
-var DB = firebase.database().ref();
+var DB = firebase.firestore();
+const settings = { timestampsInSnapshots: true };
+DB.settings(settings);
 
 
 export default DB;

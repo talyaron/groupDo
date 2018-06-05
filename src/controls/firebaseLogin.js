@@ -7,8 +7,8 @@ import store from '../data/store'
 
 firebase.auth().signInAnonymously().catch(function (error) {
     // Handle Errors here.
-    consle.error(error.code);
-    consle.error(error.message);
+    console.error(error.code);
+    console.error(error.message);
 
 });
 
@@ -17,8 +17,6 @@ firebase.auth().onAuthStateChanged(function (user) {
         console.log('User is signed in.')
         store.user.isAnonymous = user.isAnonymous;
         store.user.uid = user.uid;
-
-        DB.child('invitations/sjdfhskjhf/voters/' + store.user.uid).set(true)
 
     } else {
 
