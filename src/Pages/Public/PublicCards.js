@@ -1,5 +1,4 @@
-
-export const StartsCards = {
+export const PublicCards = {
 
     view: function (vnode) {
         var cards2 = vnode.attrs.cards;
@@ -26,6 +25,3 @@ export const StartsCards = {
         )
     }
 }
-
-
-

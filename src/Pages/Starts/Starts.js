@@ -17,7 +17,7 @@ export const Starts = {
                 </div>
                 <div class='panel'>
                     <div class="row">
-                        <StartsCards />
+                        <StartsCards cards={cards2} />
                     </div>
                 </div>
                 <div>Starts</div>
@@ -25,6 +25,13 @@ export const Starts = {
         )
     }
 }
+
+var cards2 = [
+    { name: 'test1' },
+    { name: 'test2' },
+    { name: 'test3' },
+
+]
 
 
 
