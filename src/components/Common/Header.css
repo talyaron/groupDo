@@ -1,0 +1,7 @@
+.terminalHeader {
+    color: white;
+    background: #070304;
+    text-align: center;
+    /* padding: 2px; */
+    z-index: 100;
+}

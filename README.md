@@ -1,32 +1,30 @@
-# mithril.js-starter
-Mithril.js  with Babel and JSX, CSS, Mateialize-css
+# Mithril Webpack Starter
 
-To use follow these steps
+This starter is based on [Peter Morawiec](https://github.com/moarwick)'s [elm-webpack-starter](https://github.com/moarwick/elm-webpack-starter)
 
-change to the directory you want to work on
-in command-line
+### About:
+A simple Webpack setup for writing [Mithril](http://mithril.js.org/) apps:
+
+* Dev server with live reloading, HMR
+* Support for CSS/SCSS (with Autoprefixer), image assets
+* Bundling and minification for deployment
+* Lints all your JS before allowing you to push your code (skip this by adding `--no-verify` to your push command, not recommended though)
+
+
+### Serve locally:
 ```
-git clone https://github.com/talyaron/mithril-starter.git
-
-cd mithril-starter
-
-npm install
-
 npm start
 ```
 
-To see app, got to directory public/index.html
+* Access app at `http://localhost:8080/`
+* Get coding! The entry point file is `src/bootstrap.jsx`
+* Browser will refresh automatically on any file changes..
 
-reload browser to see changes
 
-
-To use materialize-css require it in the file:
+### Build & bundle for prod:
 ```
-require('materialize-css/dist/css/materialize.css');
-var M = require('materialize-css/dist/js/materialize.js');
-```
-To use local css require it in the file (the css file should be in the same directory):
-```
-require('./style.css);
+npm run build
 ```
 
+* Files are saved into the `/dist` folder
+* To check it, open `dist/index.html`

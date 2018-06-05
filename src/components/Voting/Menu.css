@@ -1,0 +1,9 @@
+.votingMenu {
+    position: absolute;
+    bottom: 0;
+}
+
+.votingMenuButton {
+    text-align: center;
+    background: white;
+}

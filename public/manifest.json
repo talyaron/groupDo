@@ -1,0 +1,15 @@
+{
+    "short_name": "Kinlan's Amaze App",
+    "name": "Kinlan's Amazing Application ++",
+    "icons": [
+        {
+            "src": "smily.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        }
+    ],
+    "start_url": "/pwa.html",
+    "display": "standalone",
+    "orientation": "landscape",
+    "background_color": "#df3"
+}
