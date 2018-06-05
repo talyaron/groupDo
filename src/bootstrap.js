@@ -1,7 +1,8 @@
 // components
 import { Public } from "./Pages/Public/Public";
-import { Starts } from './Pages/Statrts/Starts';
+import { Starts } from './Pages/Starts/Starts';
 import { Groups } from './Pages/Groups/Groups';
+import './main.css';
 
 
 //Login

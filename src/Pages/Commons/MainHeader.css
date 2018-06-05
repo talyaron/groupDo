@@ -1,0 +1,6 @@
+.mainHeader {
+    background: var(--mainColorStrong);
+    color: var(--mainTextStrong);
+    text-align: center;
+    font-size: 1.5rem;
+}
