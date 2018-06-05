@@ -4,6 +4,7 @@ import { StartsCards } from './StartsCards';
 import { Spiner } from '../Commons/Spiner';
 
 import DB from '../../controls/firebaseConfig';
+import store from '../../data/store';
 
 import 'materialize-css/dist/css/materialize.css';
 import M from 'materialize-css/dist/js/materialize';
@@ -11,13 +12,17 @@ import M from 'materialize-css/dist/js/materialize';
 
 export const Starts = {
     oninit: function (vnode) {
-        vnode.state = { cards: [] }
+        vnode.state = { cards: store.groupActions }
         DB.collection('groupActions').get().then((groupActionsDB) => {
             var cardsDB = [];
             groupActionsDB.forEach(groupAction => {
-                cardsDB.push(groupAction.data());
+                var action = {};
+                action.name = groupAction.data().name || 'ללא שם';
+                action.description = groupAction.data().description || 'ללא תאור'
+                cardsDB.push(action);
             });
             vnode.state.cards = cardsDB;
+            store.groupActions = cardsDB;
             m.redraw();
         })
     },
