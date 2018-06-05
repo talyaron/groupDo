@@ -1,6 +1,7 @@
 import { MainHeader } from '../Commons/MainHeader';
 import { SubHeader } from '../Commons/SubHeader';
 import { StartsCards } from './StartsCards';
+import { Spiner } from '../Commons/Spiner';
 
 import DB from '../../controls/firebaseConfig';
 
@@ -29,10 +30,16 @@ export const Starts = {
                 </div>
                 <div class='panel'>
                     <div class="row">
-                        <StartsCards cards={vnode.state.cards} />
+                        {
+                            (vnode.state.cards.length == 0) ?
+                                <Spiner /> :
+                                <StartsCards cards={vnode.state.cards} />
+
+                        }
+
                     </div>
                 </div>
-                <div>Starts</div>
+
             </div>
         )
     }
