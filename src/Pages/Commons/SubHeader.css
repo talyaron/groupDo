@@ -1,0 +1,14 @@
+.subHeader {
+    background: var(--mainColorMiddle);
+    color: rgba(245, 245, 245, 0.753);
+}
+
+.menuCell {
+    text-align: center;
+    padding: 5px 5px;
+}
+
+.selected {
+    color: var(--mainTextStrong);
+    background: var(--mainColorStrong);
+}

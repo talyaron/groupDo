@@ -1,4 +1,9 @@
 :root {
     --mainColorStrong: #283593;
     --mainTextStrong: white;
+    --mainColorMiddle: #3f51b5;
+}
+
+body {
+    direction: rtl;
 }
