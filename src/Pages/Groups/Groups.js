@@ -10,8 +10,10 @@ export const Groups = {
     view: function (vnode) {
         return (
             <div class='main'>
-                <MainHeader />
-                <SubHeader selector='Groups' />
+                <div class='headers'>
+                    <MainHeader />
+                    <SubHeader selector='Groups' />
+                </div>
                 <div>Groups</div>
             </div>
         )
