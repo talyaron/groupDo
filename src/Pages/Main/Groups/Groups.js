@@ -1,11 +1,11 @@
-import { MainHeader } from '../Commons/MainHeader';
-import { SubHeader } from '../Commons/SubHeader';
+import { MainHeader } from '../../Commons/MainHeader';
+import { SubHeader } from '../../Commons/SubHeader';
 import { GroupCards } from './GroupsCards';
 
 import './Groups.css';
 
-import DB from '../../controls/firebaseConfig';
-import store from '../../data/store';
+import DB from '../../../controls/firebaseConfig';
+import store from '../../../data/store';
 
 import 'materialize-css/dist/css/materialize.css';
 import M from 'materialize-css/dist/js/materialize';

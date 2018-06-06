@@ -1,9 +1,9 @@
 // components
-import { Public } from "./Pages/Public/Public";
-import { Starts } from './Pages/Starts/Starts';
-import { Groups } from './Pages/Groups/Groups';
+import { Public } from "./Pages/Main/Public/Public";
+import { Starts } from './Pages/Main/Starts/Starts';
+import { Groups } from './Pages/Main/Groups/Groups';
 import { Group } from './Pages/Group/Group';
-import { Chats } from './Pages/Chats/Chats';
+import { Chats } from './Pages/Main/Chats/Chats';
 import './main.css';
 
 

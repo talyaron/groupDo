@@ -1,5 +1,5 @@
-import { MainHeader } from '../Commons/MainHeader';
-import { SubHeader } from '../Commons/SubHeader';
+import { MainHeader } from '../../Commons/MainHeader';
+import { SubHeader } from '../../Commons/SubHeader';
 import { PublicCards } from './PublicCards';
 
 import 'materialize-css/dist/css/materialize.css';
