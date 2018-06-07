@@ -9,7 +9,8 @@ export const Activity = {
     oninit: function (vnode) {
         vnode.state = {
             id: '',
-            name: ''
+            name: '',
+            fullExplanation: ['']
         }
         vnode.state.id = vnode.attrs.id;
 
@@ -19,6 +20,11 @@ export const Activity = {
             .onSnapshot(function (doc) {
                 vnode.state.name = doc.data().name || 'אין שם לפעילות';
                 vnode.state.description = doc.data().description || 'אין הסבר על הפעילות'
+
+                var explanationText = doc.data().fullExplanation;
+                var explanationArrayText = explanationText.split('<br />');
+                vnode.state.fullExplanation = explanationArrayText;
+
                 m.redraw();
             });
 
@@ -42,8 +48,18 @@ export const Activity = {
                     </td></tr></table>
                 </div>
                 <div class='panel'>
-                    <div class='labels'>תאור</div>
+                    <div class='labels'>הסבר כללי</div>
                     <div class='simpleText'>{vnode.state.description}</div>
+                    <div class='simpleText'>תאריך 22/5/2018</div>
+                    <div class='labels'>תאור הפעילות</div>
+                    <div class='simpleText'>
+                        {vnode.state.fullExplanation.map(function (text) {
+                            return (
+                                <p>{text}</p>
+                            )
+                        })}
+                    </div>
+                    <div class='labels'>מצרכים ומשאבים</div>
                 </div>
 
 

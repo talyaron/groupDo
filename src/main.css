@@ -2,6 +2,7 @@
     --mainColorStrong: #283593;
     --mainTextStrong: white;
     --mainColorMiddle: #3f51b5;
+    --simpleTextDark: rgba(0, 0, 0, 0.68);
 }
 
 body {
@@ -38,4 +39,5 @@ body {
     margin: 0px 20px 10px 20px;
     font-size: 1.2rem;
     text-align: justify;
+    color: var(--simpleTextDark);
 }
