@@ -18,7 +18,8 @@ export const Starts = {
             groupActionsDB.forEach(groupAction => {
                 var action = {};
                 action.name = groupAction.data().name || 'ללא שם';
-                action.description = groupAction.data().description || 'ללא תאור'
+                action.description = groupAction.data().description || 'ללא תאור';
+                action.id = groupAction.id
                 cardsDB.push(action);
             });
             vnode.state.cards = cardsDB;

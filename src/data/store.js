@@ -3,7 +3,8 @@ var store = {
     groups: [],
     user: {},
     current: {
-        group: {}
+        group: {},
+        action: {}
     }
 };
 

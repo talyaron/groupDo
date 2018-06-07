@@ -3,6 +3,7 @@ import { Public } from "./Pages/Main/Public/Public";
 import { Starts } from './Pages/Main/Starts/Starts';
 import { Groups } from './Pages/Main/Groups/Groups';
 import { Group } from './Pages/Group/Group';
+import { Activity } from './Pages/Activity/Activity';
 import { Chats } from './Pages/Main/Chats/Chats';
 import './main.css';
 
@@ -19,6 +20,7 @@ m.route(document.body, "/public", {
     "/starts": Starts,
     "/groups": Groups,
     "/group/:id": Group,
+    '/activity/:id': Activity,
     '/chat': Chats
 })
 

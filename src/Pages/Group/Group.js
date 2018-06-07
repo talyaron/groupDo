@@ -24,7 +24,6 @@ export const Group = {
 
         //get form store
         vnode.state.group = store.current.group;
-        console.log('init group:', vnode.state.group)
 
         //get group id from attrs
         vnode.state.group.id = vnode.attrs.id;
@@ -33,6 +32,7 @@ export const Group = {
                 vnode.state.group = {
                     name: groupDB.data().name,
                     description: groupDB.data().description
+
                 }
 
             } else {
@@ -55,10 +55,13 @@ export const Group = {
                 var groupActionsId = [];
                 groupActionsDB.forEach(groupActionDB => {
 
-                    groupActionsId.push(groupActionDB.data());
+                    var groupActionObj = groupActionDB.data();
+                    groupActionObj.id = groupActionDB.id
+                    groupActionsId.push(groupActionObj);
 
                 })
                 vnode.state.group.actions = groupActionsId;
+
                 m.redraw();
                 // store.current.group.groupActions = 
             })
@@ -67,7 +70,7 @@ export const Group = {
         store.current.group = {}
     },
     view: function (vnode) {
-        console.dir(vnode.state.group)
+
         return (
             <div class='main'>
                 <div

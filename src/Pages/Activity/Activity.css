@@ -1,0 +1,14 @@
+.activityHeader {
+    background: var(--mainColorStrong);
+    color: var(--mainTextStrong);
+}
+
+.activityHeaderTd {
+    /* vertical-align: middle; */
+    text-align: center;
+    padding: 5px 5px;
+}
+
+/* .activityHeaderTd i {
+    margin-left: 3px;
+} */
