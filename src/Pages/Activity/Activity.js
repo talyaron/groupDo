@@ -87,6 +87,7 @@ export const Activity = {
                     <div class='resourceCards'>
                         <table class='resourceCardTable'>
                             <tr>
+                                <th></th>
                                 <th>שם</th>
                                 <th>כמות</th>
                                 <th>אחראי/ת</th>
@@ -94,11 +95,15 @@ export const Activity = {
                             {vnode.state.resources.map(function (resource) {
                                 return (
                                     <tr>
+                                        <td><label><input type="checkbox"
+                                            name={resource.id}
+                                            style='opacity:1; position:relative' />
+                                        </label>
+                                        </td>
                                         <td>{resource.name}</td>
                                         <td>{resource.amount}</td>
                                         <td>אחראי/ת</td>
                                     </tr>
-
                                 )
                             })}
                         </table>

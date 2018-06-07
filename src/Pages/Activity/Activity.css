@@ -25,3 +25,8 @@
     text-align: right;
     padding: 3px;
 }
+
+.resourceCardTable td input {
+    position: relative;
+    opacity: 1;
+}
