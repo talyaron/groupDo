@@ -1,0 +1,11 @@
+.firebaseui-idp-list {
+    width: 190px;
+    margin: auto;
+}
+
+.loginHeader {
+    font-size: 2rem;
+    padding: 50px;
+    width: 100%;
+    text-align: center;
+}

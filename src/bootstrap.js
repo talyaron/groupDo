@@ -5,12 +5,18 @@ import { Groups } from './Pages/Main/Groups/Groups';
 import { Group } from './Pages/Group/Group';
 import { Activity } from './Pages/Activity/Activity';
 import { Chats } from './Pages/Main/Chats/Chats';
+import { Login } from './Pages/Login/Login';
 import './main.css';
+
+import store from './data/store';
 
 
 //Login
 
 import './controls/firebaseLogin'
+// console.log('user:')
+// store.user = JSON.parse(sessionStorage.getItem('user'));
+// console.dir(store.user)
 
 // Global styles
 import "./static/styles/main.scss";
@@ -21,6 +27,7 @@ m.route(document.body, "/public", {
     "/groups": Groups,
     "/group/:id": Group,
     '/activity/:id': Activity,
-    '/chat': Chats
+    '/chat': Chats,
+    '/login': Login
 })
 

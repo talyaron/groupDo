@@ -46,6 +46,7 @@
   },
   "dependencies": {
     "firebase": "^5.0.4",
+    "firebaseui": "^3.0.0",
     "lodash": "^4.17.10",
     "materialize-css": "^1.0.0-beta",
     "mithril": "^1.0.0"

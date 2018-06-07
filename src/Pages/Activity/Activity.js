@@ -43,6 +43,7 @@ export const Activity = {
                     resource.id = i;
                     resourcesArray.push(resource);
                 }
+                vnode.state.resourcesObj = resourcesObj;
                 vnode.state.resources = resourcesArray;
                 m.redraw();
 
@@ -102,7 +103,15 @@ export const Activity = {
                                         </td>
                                         <td>{resource.name}</td>
                                         <td class='resourceAmount'>{resource.amount}</td>
-                                        <td>אחראי/ת</td>
+                                        <td
+                                            class={(resource.responsibleName) ? 'responsibleTrue' : 'responsibleFalse'}
+                                            id={resource.id}
+                                            onclick={(e) => {
+                                                setResponsibilty(e.target.id, vnode.state.id, store.user.uid, store.user.displayName, vnode)
+                                            }}>
+
+                                            {(resource.responsibleName) ? resource.responsibleName : 'קחו אחריות'}
+                                        </td>
                                     </tr>
                                 )
                             })}
@@ -114,4 +123,33 @@ export const Activity = {
             </div>
         )
     }
+}
+
+function setResponsibilty(resourceId, acitivitId, responsibleId, responsibleName, vnode) {
+
+
+    if (!vnode.state.resourcesObj[resourceId].responsibleId) {
+        //if nobody took responsibility - set responsibility
+        DB.collection('groupActions').doc(acitivitId).collection('resources').doc(resourceId)
+            .update({
+                responsibleId: responsibleId,
+                responsibleName: responsibleName
+            })
+    }
+    else if (vnode.state.resourcesObj[resourceId].responsibleId == responsibleId) {
+        //if the responder is allredy set, remove it
+        DB.collection('groupActions').doc(acitivitId).collection('resources').doc(resourceId)
+            .update({
+                responsibleId: false,
+                responsibleName: false
+            })
+    } else {
+        DB.collection('groupActions').doc(acitivitId).collection('resources').doc(resourceId)
+            .update({
+                responsibleId: responsibleId,
+                responsibleName: responsibleName
+            })
+    }
+
+
 }

@@ -34,3 +34,16 @@
     max-width: 550px;
     margin: auto;
 }
+
+.responsible {
+    background: #e3cb9f;
+    text-align: center !important;
+    cursor: pointer;
+    user-select: none;
+}
+
+.responsibleTrue {
+    background: #4cf14c;
+}
+
+.responsibleFalse {}
