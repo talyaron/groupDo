@@ -71,7 +71,7 @@ export const Activity = {
                         <span>{vnode.state.name}</span>
                     </td></tr></table>
                 </div>
-                <div class='panel'>
+                <div class='panel panelActivity'>
                     <div class='labels'>הסבר כללי</div>
                     <div class='simpleText'>{vnode.state.description}</div>
                     <div class='simpleText'>תאריך 22/5/2018</div>
@@ -89,7 +89,7 @@ export const Activity = {
                             <tr>
                                 <th></th>
                                 <th>שם</th>
-                                <th>כמות</th>
+                                <th class='resourceAmount'>כמות</th>
                                 <th>אחראי/ת</th>
                             </tr>
                             {vnode.state.resources.map(function (resource) {
@@ -97,11 +97,11 @@ export const Activity = {
                                     <tr>
                                         <td><label><input type="checkbox"
                                             name={resource.id}
-                                            style='opacity:1; position:relative' />
+                                            style='opacity:1; position:relative; margin:3px' />
                                         </label>
                                         </td>
                                         <td>{resource.name}</td>
-                                        <td>{resource.amount}</td>
+                                        <td class='resourceAmount'>{resource.amount}</td>
                                         <td>אחראי/ת</td>
                                     </tr>
                                 )

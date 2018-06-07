@@ -26,7 +26,11 @@
     padding: 3px;
 }
 
-.resourceCardTable td input {
-    position: relative;
-    opacity: 1;
+.resourceAmount {
+    text-align: center !important;
+}
+
+.panelActivity {
+    max-width: 550px;
+    margin: auto;
 }
