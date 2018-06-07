@@ -2,6 +2,9 @@ import './Activity.css';
 import DB from '../../controls/firebaseConfig';
 import store from '../../data/store';
 
+import firebase from 'firebase/app';
+import 'firebase/auth';
+
 import 'materialize-css/dist/css/materialize.css';
 import M from 'materialize-css/dist/js/materialize';
 
@@ -57,6 +60,7 @@ export const Activity = {
     },
     onremove: function (vnode) {
         vnode.state.unsubscribe();
+
     },
     view: function (vnode) {
         return (
@@ -116,6 +120,15 @@ export const Activity = {
                                 )
                             })}
                         </table>
+                        <p onclick={() => {
+                            firebase.auth().signOut().then(function () {
+                                // Sign-out successful.
+                                store.user = {}
+                            }, function (error) {
+                                // An error happened.
+                            });
+
+                        }}>התנתק</p>
                     </div>
                 </div>
 
@@ -127,28 +140,33 @@ export const Activity = {
 
 function setResponsibilty(resourceId, acitivitId, responsibleId, responsibleName, vnode) {
 
-
-    if (!vnode.state.resourcesObj[resourceId].responsibleId) {
-        //if nobody took responsibility - set responsibility
-        DB.collection('groupActions').doc(acitivitId).collection('resources').doc(resourceId)
-            .update({
-                responsibleId: responsibleId,
-                responsibleName: responsibleName
-            })
-    }
-    else if (vnode.state.resourcesObj[resourceId].responsibleId == responsibleId) {
-        //if the responder is allredy set, remove it
-        DB.collection('groupActions').doc(acitivitId).collection('resources').doc(resourceId)
-            .update({
-                responsibleId: false,
-                responsibleName: false
-            })
+    if (!store.user.uid) {
+        store.lastUrl = '#!/activity/' + acitivitId
+        m.route.set('/login')
     } else {
-        DB.collection('groupActions').doc(acitivitId).collection('resources').doc(resourceId)
-            .update({
-                responsibleId: responsibleId,
-                responsibleName: responsibleName
-            })
+
+        if (!vnode.state.resourcesObj[resourceId].responsibleId) {
+            //if nobody took responsibility - set responsibility
+            DB.collection('groupActions').doc(acitivitId).collection('resources').doc(resourceId)
+                .update({
+                    responsibleId: responsibleId,
+                    responsibleName: responsibleName
+                })
+        }
+        else if (vnode.state.resourcesObj[resourceId].responsibleId == responsibleId) {
+            //if the responder is allredy set, remove it
+            DB.collection('groupActions').doc(acitivitId).collection('resources').doc(resourceId)
+                .update({
+                    responsibleId: false,
+                    responsibleName: false
+                })
+        } else {
+            DB.collection('groupActions').doc(acitivitId).collection('resources').doc(resourceId)
+                .update({
+                    responsibleId: responsibleId,
+                    responsibleName: responsibleName
+                })
+        }
     }
 
 
