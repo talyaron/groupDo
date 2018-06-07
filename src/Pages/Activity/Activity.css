@@ -9,6 +9,19 @@
     padding: 5px 5px;
 }
 
-/* .activityHeaderTd i {
-    margin-left: 3px;
-} */
+.resourceCards {
+    background: wheat;
+    border-radius: 4px;
+    padding: 5px;
+    margin: 3px 0px 3px 0px;
+}
+
+.resourceCardTable td, th {
+    padding: 0px;
+    text-align: center;
+}
+
+.resourceCardTable td {
+    text-align: right;
+    padding: 3px;
+}

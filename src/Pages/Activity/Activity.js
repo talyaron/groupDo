@@ -10,7 +10,8 @@ export const Activity = {
         vnode.state = {
             id: '',
             name: '',
-            fullExplanation: ['']
+            fullExplanation: [''],
+            resources: []
         }
         vnode.state.id = vnode.attrs.id;
 
@@ -18,6 +19,7 @@ export const Activity = {
         vnode.state.unsubscribe = DB.collection('groupActions')
             .doc(vnode.state.id)
             .onSnapshot(function (doc) {
+
                 vnode.state.name = doc.data().name || 'אין שם לפעילות';
                 vnode.state.description = doc.data().description || 'אין הסבר על הפעילות'
 
@@ -27,7 +29,29 @@ export const Activity = {
 
                 m.redraw();
             });
+        //get resources from DB
+        console.log('st')
+        DB.collection('groupActions').doc(vnode.state.id).collection('resources')
+            .onSnapshot(resourcesDB => {
+                var resourcesObj = {}
+                resourcesDB.forEach(doc => {
+                    resourcesObj[doc.id] = doc.data()
+                })
+                var resourcesArray = [];
+                for (var i in resourcesObj) {
+                    var resource = resourcesObj[i];
+                    resource.id = i;
+                    resourcesArray.push(resource);
+                }
+                vnode.state.resources = resourcesArray;
+                m.redraw();
 
+            })
+
+
+
+    },
+    onbeforeupdate: function (vnode) {
 
     },
     onremove: function (vnode) {
@@ -60,6 +84,25 @@ export const Activity = {
                         })}
                     </div>
                     <div class='labels'>מצרכים ומשאבים</div>
+                    <div class='resourceCards'>
+                        <table class='resourceCardTable'>
+                            <tr>
+                                <th>שם</th>
+                                <th>כמות</th>
+                                <th>אחראי/ת</th>
+                            </tr>
+                            {vnode.state.resources.map(function (resource) {
+                                return (
+                                    <tr>
+                                        <td>{resource.name}</td>
+                                        <td>{resource.amount}</td>
+                                        <td>אחראי/ת</td>
+                                    </tr>
+
+                                )
+                            })}
+                        </table>
+                    </div>
                 </div>
 
 

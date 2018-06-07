@@ -26,17 +26,16 @@ body {
 }
 
 .panel {
-    padding-top: 70px;
+    padding: 70px 20px 20px 20px;
 }
 
 .labels {
     font-size: 1.2rem;
     font-weight: 600;
-    margin-right: 20px;
 }
 
 .simpleText {
-    margin: 0px 20px 10px 20px;
+    margin: 0px 0px 10px 0px;
     font-size: 1.2rem;
     text-align: justify;
     color: var(--simpleTextDark);
