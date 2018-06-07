@@ -10,6 +10,11 @@
     user-select: none;
 }
 
+.menuCell i {
+    vertical-align: middle;
+    padding-left: 3px;
+}
+
 .selected {
     color: var(--mainTextStrong);
     background: var(--mainColorStrong);

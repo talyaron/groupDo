@@ -18,3 +18,15 @@ body {
 .panel {
     padding-top: 70px;
 }
+
+.labels {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-right: 20px;
+}
+
+.simpleText {
+    margin: 0px 20px 10px 20px;
+    font-size: 1.2rem;
+    text-align: justify;
+}

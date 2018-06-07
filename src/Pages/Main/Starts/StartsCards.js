@@ -2,7 +2,8 @@
 export const StartsCards = {
 
     view: function (vnode) {
-        var cards2 = vnode.attrs.cards;
+        var cards2 = vnode.attrs.cards || [];
+        console.log('cards', cards2)
         return (
             cards2.map(function (card, index) {
                 return (
