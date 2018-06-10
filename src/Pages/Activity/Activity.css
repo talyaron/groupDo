@@ -63,6 +63,7 @@
     color: rgb(68, 68, 68);
     opacity: 1;
     /* Firefox */
+    font-size: 1rem;
 }
 
 .confirmResource {
@@ -79,4 +80,8 @@
     cursor: pointer;
     user-select: none;
     text-align: center;
+}
+
+#rsAmount {
+    width: 52px;
 }

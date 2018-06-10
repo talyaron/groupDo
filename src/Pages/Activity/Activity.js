@@ -124,7 +124,7 @@ export const Activity = {
                                 <tr>
                                     <td></td>
                                     <td>
-                                        <input type='text' placeholder='שם הפריט' id='rsName' />
+                                        <input type='text' autofocus placeholder='שם הפריט' id='rsName' />
                                     </td>
                                     <td>
                                         <input type='number' placeholder='כמות' id='rsAmount' />
@@ -207,9 +207,8 @@ function toggleAddResource(vnode) {
 }
 
 function addResourceToDB(vnode) {
-    console.log(rsName.value);
-    console.log(rsAmount.value);
-    if (rsName && rsAmount) {
+
+    if (rsName.value && rsAmount.value) {
         DB.collection('groupActions').doc(vnode.state.id).collection('resources').add({
             name: rsName.value,
             amount: rsAmount.value
