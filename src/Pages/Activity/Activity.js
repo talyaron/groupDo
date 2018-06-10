@@ -14,7 +14,8 @@ export const Activity = {
             id: '',
             name: '',
             fullExplanation: [''],
-            resources: []
+            resources: [],
+            addResource: false
         }
         vnode.state.id = vnode.attrs.id;
 
@@ -119,25 +120,37 @@ export const Activity = {
                                     </tr>
                                 )
                             })}
-                            {
+                            {(vnode.state.addResource) ?
                                 <tr>
                                     <td></td>
                                     <td>
-                                        <input type='text' placeholder='שם הפריט' />
+                                        <input type='text' placeholder='שם הפריט' id='rsName' />
                                     </td>
                                     <td>
-                                        <input type='number' placeholder='כמות' />
+                                        <input type='number' placeholder='כמות' id='rsAmount' />
                                     </td>
-                                    <td class='confirmResource'>
+                                    <td class='confirmResource'
+                                        onclick={() => { addResourceToDB(vnode); vnode.state.addResource = false }}
+                                    >
                                         הוספה
                                         </td>
-                                    <td class='cancelResource'>
+                                    <td
+                                        class='cancelResource'
+                                        onclick={() => { cancelResource(); vnode.state.addResource = false }}
+                                    >
                                         ביטול
                                         </td>
                                 </tr>
+                                :
+                                <tr></tr>
                             }
                             <tr>
-                                <td colspan="2" class='addResource'>
+                                <td
+                                    colspan="2"
+                                    class='addResource'
+                                    onclick={() => { toggleAddResource(vnode) }}
+
+                                >
                                     <i class="material-icons">
                                         add
                                     </i>
@@ -183,6 +196,36 @@ function setResponsibilty(resourceId, acitivitId, responsibleId, responsibleName
                 })
         }
     }
+}
 
+function toggleAddResource(vnode) {
+    if (vnode.state.addResource) {
+        vnode.state.addResource = false;
+    } else {
+        vnode.state.addResource = true;
+    }
+}
 
+function addResourceToDB(vnode) {
+    console.log(rsName.value);
+    console.log(rsAmount.value);
+    if (rsName && rsAmount) {
+        DB.collection('groupActions').doc(vnode.state.id).collection('resources').add({
+            name: rsName.value,
+            amount: rsAmount.value
+        })
+            .then(function () {
+                console.log("Document successfully written!");
+                rsName.value = '';
+                rsAmount.value = 0;
+            })
+            .catch(function (error) {
+                console.error("Error writing document: ", error);
+            });
+    }
+}
+
+function cancelResource() {
+    rsName.value = '';
+    rsAmount.value = 0;
 }
