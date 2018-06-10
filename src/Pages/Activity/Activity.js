@@ -119,16 +119,31 @@ export const Activity = {
                                     </tr>
                                 )
                             })}
+                            {
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <input type='text' placeholder='שם הפריט' />
+                                    </td>
+                                    <td>
+                                        <input type='number' placeholder='כמות' />
+                                    </td>
+                                    <td class='confirmResource'>
+                                        הוספה
+                                        </td>
+                                    <td class='cancelResource'>
+                                        ביטול
+                                        </td>
+                                </tr>
+                            }
+                            <tr>
+                                <td colspan="2" class='addResource'>
+                                    <i class="material-icons">
+                                        add
+                                    </i>
+                                </td>
+                            </tr>
                         </table>
-                        <p onclick={() => {
-                            firebase.auth().signOut().then(function () {
-                                // Sign-out successful.
-                                store.user = {}
-                            }, function (error) {
-                                // An error happened.
-                            });
-
-                        }}>התנתק</p>
                     </div>
                 </div>
 

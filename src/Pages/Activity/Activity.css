@@ -47,3 +47,36 @@
 }
 
 .responsibleFalse {}
+
+.addResource {
+    background: blue;
+    color: white;
+    text-align: center !important;
+    border-radius: 4px;
+    padding: 3px !important;
+    cursor: pointer;
+    user-select: none;
+}
+
+::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: rgb(68, 68, 68);
+    opacity: 1;
+    /* Firefox */
+}
+
+.confirmResource {
+    background: green;
+    color: white;
+    cursor: pointer;
+    user-select: none;
+    text-align: center !important;
+}
+
+.cancelResource {
+    background: red;
+    color: white;
+    cursor: pointer;
+    user-select: none;
+    text-align: center;
+}
