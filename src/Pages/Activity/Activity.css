@@ -28,6 +28,7 @@
 
 .resourceAmount {
     text-align: center !important;
+    max-width: 52px;
 }
 
 .panelActivity {
@@ -84,4 +85,8 @@
 
 #rsAmount {
     width: 52px;
+}
+
+.nameSelected {
+    box-shadow: 0px 0px 15px blue;
 }

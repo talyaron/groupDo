@@ -14,6 +14,8 @@ export const Activity = {
             id: '',
             name: '',
             fullExplanation: [''],
+            editAmount: [],
+            editName: [],
             resources: [],
             addResource: false
         }
@@ -99,6 +101,7 @@ export const Activity = {
                                 <th>אחראי/ת</th>
                             </tr>
                             {vnode.state.resources.map(function (resource) {
+
                                 return (
                                     <tr>
                                         <td><label><input type="checkbox"
@@ -106,8 +109,21 @@ export const Activity = {
                                             style='opacity:1; position:relative; margin:3px' />
                                         </label>
                                         </td>
-                                        <td>{resource.name}</td>
-                                        <td class='resourceAmount'>{resource.amount}</td>
+                                        <td
+                                            id={'name_' + resource.id}
+                                            onclick={(e) => { editName(e) }}
+                                            onkeyup={(e) => { setNameToDb(e, vnode) }}
+                                            onblur={(e) => { setNameToDb(e, vnode) }}
+                                        >
+                                            {resource.name}
+                                        </td>
+                                        <td
+                                            id={'amount_' + resource.id}
+                                            class='resourceAmount'
+                                            onclick={(e) => { editAmount(e, vnode) }}
+                                        >
+                                            {(vnode.state.editAmount[resource.id]) ? <input type='number' onblur={(e) => { addAmountToDB(e, vnode) }} /> : resource.amount}
+                                        </td>
                                         <td
                                             class={(resource.responsibleName) ? 'responsibleTrue' : 'responsibleFalse'}
                                             id={resource.id}
@@ -227,4 +243,58 @@ function addResourceToDB(vnode) {
 function cancelResource() {
     rsName.value = '';
     rsAmount.value = 0;
+}
+
+function editName(e) {
+    var idOfName = e.target.id;
+    idOfName = idOfName.slice(5);
+    var element = document.getElementById(e.target.id);
+    element.classList.add('nameSelected')
+    element.setAttribute("contenteditable", true)
+}
+
+function setNameToDb(e, vnode) {
+    e.preventDefault();
+    console.dir(e)
+    if (e.keyCode === 13 || e.type === 'blur') {
+        //set name to db.
+
+        var element = document.getElementById(e.target.id);
+        element.classList.remove('nameSelected')
+        element.setAttribute("contenteditable", false)
+        var idOfName = e.target.id;
+        idOfName = idOfName.slice(5);
+        DB.collection('groupActions').doc(vnode.state.id).collection('resources').doc(idOfName).update({
+            name: e.target.textContent
+
+        })
+    }
+
+}
+
+function editAmount(e, vnode) {
+
+
+    var targetMainId = e.target.id;
+    targetMainId = targetMainId.slice(7)
+    vnode.state.editAmount[targetMainId] = true;
+
+}
+
+function addAmountToDB(e, vnode) {
+    if (e.keyCode === 13 || e.type === 'blur') {
+        //set amount to db.
+        console.log(e)
+
+        var idOfAmount = e.target.id;
+        idOfAmount = idOfAmount.slice(7);
+        vnode.state.editAmount[idOfAmount] = false;
+
+        DB.collection('groupActions')
+            .doc(vnode.state.id).collection('resources')
+            .doc(idOfAmount)
+            .update({
+                amount: e.target.valueAsNumber
+            })
+    }
 }
