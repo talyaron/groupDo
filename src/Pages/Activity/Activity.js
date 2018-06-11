@@ -1,4 +1,6 @@
 import './Activity.css';
+import { ActivityDescription } from './ActivityDescription';
+
 import DB from '../../controls/firebaseConfig';
 import store from '../../data/store';
 
@@ -17,7 +19,8 @@ export const Activity = {
             editAmount: [],
             editName: [],
             resources: [],
-            addResource: false
+            addResource: false,
+            description: ''
         }
         vnode.state.id = vnode.attrs.id;
 
@@ -80,17 +83,7 @@ export const Activity = {
                     </td></tr></table>
                 </div>
                 <div class='panel panelActivity'>
-                    <div class='labels'>הסבר כללי</div>
-                    <div class='simpleText'>{vnode.state.description}</div>
-                    <div class='simpleText'>תאריך 22/5/2018</div>
-                    <div class='labels'>תאור הפעילות</div>
-                    <div class='simpleText'>
-                        {vnode.state.fullExplanation.map(function (text) {
-                            return (
-                                <p>{text}</p>
-                            )
-                        })}
-                    </div>
+                    <ActivityDescription description={vnode.state.description} fullExplanation={vnode.state.fullExplanation} />
                     <div class='labels'>מצרכים ומשאבים</div>
                     <div class='resourceCards'>
                         <table class='resourceCardTable'>
@@ -104,7 +97,7 @@ export const Activity = {
                             {vnode.state.resources.map(function (resource) {
 
                                 return (
-                                    <tr>
+                                    <tr class='newResource'>
                                         <td><label><input type="checkbox"
                                             name={resource.id}
                                             style='opacity:1; position:relative; margin:3px' />
@@ -130,7 +123,7 @@ export const Activity = {
                                                     value={Number(resource.amount)}
                                                     onchange={(e) => { resource.amount = e.target.value }}
                                                     onblur={(e) => { addAmountToDB(e, vnode) }}
-                                                    onkeyup={(e) => { addAmountToDB(e, vnode) }} />
+                                                    onkeyup={(e) => { resource.amount = e.target.value; addAmountToDB(e, vnode) }} />
                                                 : resource.amount}
                                         </td>
                                         <td
