@@ -120,9 +120,17 @@ export const Activity = {
                                         <td
                                             id={'amount_' + resource.id}
                                             class='resourceAmount'
-                                            onclick={(e) => { editAmount(e, vnode) }}
+                                            onclick={(e) => { editAmount(e, vnode, resource.amount) }}
                                         >
-                                            {(vnode.state.editAmount[resource.id]) ? <input type='number' onblur={(e) => { addAmountToDB(e, vnode) }} /> : resource.amount}
+                                            {(vnode.state.editAmount[resource.id]) ?
+                                                <input
+                                                    id={'amountIn' + resource.id}
+                                                    type='number'
+                                                    value={Number(resource.amount)}
+                                                    onchange={(e) => { resource.amount = e.target.value }}
+                                                    onblur={(e) => { addAmountToDB(e, vnode) }}
+                                                    onkeyup={(e) => { addAmountToDB(e, vnode) }} />
+                                                : resource.amount}
                                         </td>
                                         <td
                                             class={(resource.responsibleName) ? 'responsibleTrue' : 'responsibleFalse'}
@@ -272,12 +280,13 @@ function setNameToDb(e, vnode) {
 
 }
 
-function editAmount(e, vnode) {
+function editAmount(e, vnode, amount) {
 
 
     var targetMainId = e.target.id;
     targetMainId = targetMainId.slice(7)
     vnode.state.editAmount[targetMainId] = true;
+
 
 }
 
@@ -287,7 +296,8 @@ function addAmountToDB(e, vnode) {
         console.log(e)
 
         var idOfAmount = e.target.id;
-        idOfAmount = idOfAmount.slice(7);
+        idOfAmount = idOfAmount.slice(8);
+        console.log('close', idOfAmount)
         vnode.state.editAmount[idOfAmount] = false;
 
         DB.collection('groupActions')
