@@ -102,4 +102,6 @@ th {
 .deleteResource {
     color: #73737340;
     text-align: center;
+    cursor: pointer;
+    user-select: none;
 }

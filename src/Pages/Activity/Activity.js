@@ -143,7 +143,11 @@ export const Activity = {
                                             {(resource.responsibleName) ? resource.responsibleName : 'קחו אחריות'}
                                         </td>
                                         <td class='deleteResourceTd'>
-                                            <i class="material-icons deleteResource">
+                                            <i
+                                                class="material-icons deleteResource"
+                                                id={'delete_' + resource.id}
+                                                onclick={(e) => { deleteResource(e, vnode) }}
+                                            >
                                                 delete
                                         </i>
                                         </td>
@@ -313,4 +317,15 @@ function addAmountToDB(e, vnode) {
                 amount: e.target.valueAsNumber
             })
     }
+}
+
+function deleteResource(e, vnode) {
+
+    var resourceId = e.target.id;
+    resourceId = resourceId.slice(7)
+    DB.collection('groupActions').doc(vnode.state.id).collection('resources').doc(resourceId).delete().then(function () {
+        console.log("Document successfully deleted!");
+    }).catch(function (error) {
+        console.error("Error removing document: ", error);
+    });;
 }
