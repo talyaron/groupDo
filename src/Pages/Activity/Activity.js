@@ -99,6 +99,7 @@ export const Activity = {
                                 <th>שם</th>
                                 <th class='resourceAmount'>כמות</th>
                                 <th>אחראי/ת</th>
+                                <th>מחיקה</th>
                             </tr>
                             {vnode.state.resources.map(function (resource) {
 
@@ -140,6 +141,11 @@ export const Activity = {
                                             }}>
 
                                             {(resource.responsibleName) ? resource.responsibleName : 'קחו אחריות'}
+                                        </td>
+                                        <td class='deleteResourceTd'>
+                                            <i class="material-icons deleteResource">
+                                                delete
+                                        </i>
                                         </td>
                                     </tr>
                                 )

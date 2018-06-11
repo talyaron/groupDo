@@ -1,3 +1,7 @@
+th {
+    padding: 0px 3px 0px 3px !important;
+}
+
 .activityHeader {
     background: var(--mainColorStrong);
     color: var(--mainTextStrong);
@@ -89,4 +93,13 @@
 
 .nameSelected {
     box-shadow: 0px 0px 15px blue;
+}
+
+.deleteResourceTd {
+    text-align: center !important;
+}
+
+.deleteResource {
+    color: #73737340;
+    text-align: center;
 }
