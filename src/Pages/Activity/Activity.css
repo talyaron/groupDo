@@ -121,6 +121,23 @@ th {
     }
 }
 
+.descriptionRow {
+    border: none;
+}
+
 .activityChat {
     color: #80808073;
+}
+
+.chatDone {
+    width: 20px;
+    padding: 4px 4px !important;
+}
+
+.chatDoneRow {
+    border: none !important;
+}
+
+.chatDoneCell {
+    padding: 4px 4px !important;
 }
