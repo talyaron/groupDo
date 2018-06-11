@@ -39,7 +39,7 @@ export const Activity = {
                 m.redraw();
             });
         //get resources from DB
-        console.log('st')
+
         DB.collection('groupActions').doc(vnode.state.id).collection('resources')
             .onSnapshot(resourcesDB => {
                 var resourcesObj = {}
@@ -83,7 +83,11 @@ export const Activity = {
                     </td></tr></table>
                 </div>
                 <div class='panel panelActivity'>
-                    <ActivityDescription description={vnode.state.description} fullExplanation={vnode.state.fullExplanation} />
+                    <ActivityDescription
+                        description={vnode.state.description}
+                        fullExplanation={vnode.state.fullExplanation}
+                        activtyId={vnode.state.id}
+                    />
                     <div class='labels'>מצרכים ומשאבים</div>
                     <div class='resourceCards'>
                         <table class='resourceCardTable'>
@@ -241,7 +245,7 @@ function addResourceToDB(vnode) {
             amount: rsAmount.value
         })
             .then(function () {
-                console.log("Document successfully written!");
+
                 rsName.value = '';
                 rsAmount.value = 0;
             })
@@ -266,7 +270,7 @@ function editName(e) {
 
 function setNameToDb(e, vnode) {
     e.preventDefault();
-    console.dir(e)
+
     if (e.keyCode === 13 || e.type === 'blur') {
         //set name to db.
 
@@ -296,11 +300,10 @@ function editAmount(e, vnode, amount) {
 function addAmountToDB(e, vnode) {
     if (e.keyCode === 13 || e.type === 'blur') {
         //set amount to db.
-        console.log(e)
 
         var idOfAmount = e.target.id;
         idOfAmount = idOfAmount.slice(8);
-        console.log('close', idOfAmount)
+
         vnode.state.editAmount[idOfAmount] = false;
 
         DB.collection('groupActions')

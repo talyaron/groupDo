@@ -1,6 +1,18 @@
-import './Activity.css'
+import './Activity.css';
+import DB from '../../controls/firebaseConfig';
+import store from '../../data/store';
 
 export const ActivityDescription = {
+
+    oninit: function (vnode) {
+        vnode.state = { descriptionChatCounter: 0 }
+        //get chats counter
+        DB.collection('groupActions').doc(vnode.attrs.activtyId)
+            .collection('chatDescription').onSnapshot(function (chatsDB) {
+                vnode.state.descriptionChatCounter = chatsDB.size
+                m.redraw();
+            })
+    },
     view: function (vnode) {
 
         return (
@@ -67,10 +79,16 @@ export const ActivityDescription = {
                         </td>
                         <td class='chatDone'>
                             <tr class='chatDoneRow'>
-                                <td class='chatDoneCell'>
-                                    <i class="material-icons activityChat">
+                                <td class='chatDoneCell'
+                                    onclick={() => { m.route.set('/chat/' + vnode.attrs.activtyId + '__chatDescription') }}
+                                >
+                                    <i class={(vnode.state.descriptionChatCounter > 0)
+                                        ? 'material-icons activityChat newChat'
+                                        : 'material-icons activityChat'}>
                                         chat
                                     </i>
+                                    <div
+                                        class='chatCounter'>{vnode.state.descriptionChatCounter}</div>
                                 </td>
                             </tr>
                             <tr class='chatDoneRow'>

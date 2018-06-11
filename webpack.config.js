@@ -6,7 +6,7 @@ var autoprefixer = require("autoprefixer");
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var CopyWebpackPlugin = require("copy-webpack-plugin");
 var entryPath = path.join(__dirname, "src/bootstrap.js");
-var outputPath = path.join(__dirname, "public");
+var outputPath = path.join(__dirname, "public/groupDo");
 
 console.log("WEBPACK GO!");
 

@@ -141,3 +141,15 @@ th {
 .chatDoneCell {
     padding: 4px 4px !important;
 }
+
+.chatCounter {
+    font-size: 0.8rem;
+    position: relative;
+    top: -12px;
+    left: 20px;
+    height: 0px;
+}
+
+.newChat {
+    color: green;
+}

@@ -5,6 +5,7 @@ import { Groups } from './Pages/Main/Groups/Groups';
 import { Group } from './Pages/Group/Group';
 import { Activity } from './Pages/Activity/Activity';
 import { Chats } from './Pages/Main/Chats/Chats';
+import { Chat } from './Pages/Chat/Chat';
 import { Login } from './Pages/Login/Login';
 import './main.css';
 
@@ -27,7 +28,8 @@ m.route(document.body, "/public", {
     "/groups": Groups,
     "/group/:id": Group,
     '/activity/:id': Activity,
-    '/chat': Chats,
+    '/chats': Chats,
+    '/chat/:id': Chat,
     '/login': Login
 })
 
