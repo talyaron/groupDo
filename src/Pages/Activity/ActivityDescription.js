@@ -80,7 +80,10 @@ export const ActivityDescription = {
                         <td class='chatDone'>
                             <tr class='chatDoneRow'>
                                 <td class='chatDoneCell'
-                                    onclick={() => { m.route.set('/chat/' + vnode.attrs.activtyId + '__chatDescription') }}
+                                    onclick={() => {
+                                        m.route.set('/chat/' + vnode.attrs.activtyId + '__chatDescription');
+                                        store.current.chat.name = vnode.attrs.activityName;
+                                    }}
                                 >
                                     <i class={(vnode.state.descriptionChatCounter > 0)
                                         ? 'material-icons activityChat newChat'

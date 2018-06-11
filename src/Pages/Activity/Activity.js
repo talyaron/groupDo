@@ -87,6 +87,7 @@ export const Activity = {
                         description={vnode.state.description}
                         fullExplanation={vnode.state.fullExplanation}
                         activtyId={vnode.state.id}
+                        activityName={vnode.state.name}
                     />
                     <div class='labels'>מצרכים ומשאבים</div>
                     <div class='resourceCards'>

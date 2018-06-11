@@ -4,7 +4,10 @@ var store = {
     user: {},
     current: {
         group: {},
-        action: {}
+        action: {},
+        chat: {
+            name: ''
+        }
     }
 };
 
