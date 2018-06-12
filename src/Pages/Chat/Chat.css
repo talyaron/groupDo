@@ -1,5 +1,5 @@
 .chatInputDiv {
-    position: fixed;
+    position: relative;
     bottom: 0px;
     left: 0px;
     width: 100%;
@@ -15,6 +15,14 @@
 }
 
 .chatInput {}
+
+.chatPanel {
+    background: rgb(0, 216, 216);
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+    left: 0px;
+}
 
 #chatInput {
     background: whitesmoke !important;

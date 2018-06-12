@@ -1,0 +1,10 @@
+.messageBox {
+    background: white;
+    box-shadow: 2px 2px 4px rgba(128, 128, 128, 0.589);
+    border-radius: 2px 10px 2px 10px;
+}
+
+.messagesPanel {
+    position: relative;
+    bottom: 0px;
+}
