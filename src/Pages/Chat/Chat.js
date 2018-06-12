@@ -1,6 +1,10 @@
 import DB from '../../controls/firebaseConfig';
 import store from '../../data/store';
 
+import firebase from "firebase/app";
+import "firebase/firestore";
+
+
 import './Chat.css';
 
 export const Chat = {
@@ -65,7 +69,7 @@ export const Chat = {
                                 </td>
                                 <td
                                     class='sendMessageTd'
-                                    onclick={() => { sendMessageToDB(chatInput.value) }}
+                                    onclick={() => { sendMessageToDB(chatInput.value, vnode) }}
                                 >
                                     <i class="material-icons sendMessage">
                                         send
@@ -80,6 +84,12 @@ export const Chat = {
     }
 }
 
-function sendMessageToDB(text) {
-
+function sendMessageToDB(text, vnode) {
+    const timestamp = firebase.firestore.FieldValue.serverTimestamp()
+    DB.collection('groupActions')
+        .doc(vnode.state.activityId)
+        .collection(vnode.state.chatType).add({
+            message: text,
+            time: timestamp
+        })
 }
