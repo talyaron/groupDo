@@ -1,0 +1,33 @@
+.chatInputDiv {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    background: wheat;
+    padding: 10px;
+}
+
+.chatInputDivTb {
+    max-width: 550px;
+    position: relative;
+    right: 50%;
+    transform: translateX(50%);
+}
+
+.chatInput {}
+
+#chatInput {
+    background: whitesmoke !important;
+    border-radius: 6px 6px 0px 0px !important;
+}
+
+.sendMessageTd {
+    width: 60px;
+    user-select: none;
+    cursor: pointer;
+}
+
+.sendMessage {
+    position: relative;
+    left: 30px;
+}

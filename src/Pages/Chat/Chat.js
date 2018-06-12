@@ -1,6 +1,8 @@
 import DB from '../../controls/firebaseConfig';
 import store from '../../data/store';
 
+import './Chat.css';
+
 export const Chat = {
     oninit: function (vnode) {
         vnode.state = {
@@ -43,15 +45,41 @@ export const Chat = {
                     class='headers'
                     onclick={() => { m.route.set('/activity/' + vnode.state.activityId) }}
                 >
-
                     <i class="material-icons menuIcons">
                         chat
                     </i>
                     {chatNames[vnode.state.chatType]}
                     {store.current.chat.name}
                 </div>
-
+                <div class='panel'>
+                    <div class='chatInputDiv'>
+                        <table class='chatInputDivTb'>
+                            <tr>
+                                <td>
+                                    <textarea
+                                        id="chatInput"
+                                        class="materialize-textarea chatInput"
+                                        autofocus
+                                    >
+                                    </textarea>
+                                </td>
+                                <td
+                                    class='sendMessageTd'
+                                    onclick={() => { sendMessageToDB(chatInput.value) }}
+                                >
+                                    <i class="material-icons sendMessage">
+                                        send
+                                    </i>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
             </div>
         )
     }
+}
+
+function sendMessageToDB(text) {
+
 }
