@@ -12,7 +12,7 @@ export const Login = {
         var uiConfig = {
             callbacks: {
                 signInSuccessWithAuthResult: function (authResult, redirectUrl) {
-                    console.dir(authResult)
+
                     store.user = {
                         displayName: authResult.displayName,
                         email: authResult.email,

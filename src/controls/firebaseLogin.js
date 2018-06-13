@@ -5,17 +5,11 @@ import DB from './firebaseConfig';
 
 import store from '../data/store'
 
-// firebase.auth().signInAnonymously().catch(function (error) {
-//     // Handle Errors here.
-//     console.error(error.code);
-//     console.error(error.message);
-
-// });
 
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
         console.log('User is signed in.')
-        console.dir(user)
+
         // store.user.isAnonymous = user.isAnonymous;
         store.user = {
             uid: user.uid,
@@ -25,7 +19,13 @@ firebase.auth().onAuthStateChanged(function (user) {
 
         };
 
-        console.dir(store.user)
+        DB.collection('users').doc(user.uid).update(store.user).then(function () {
+            console.log('user updated')
+        }).catch(function (error) {
+            DB.collection('users').doc(user.uid).set(store.user)
+        })
+
+
 
     } else {
 

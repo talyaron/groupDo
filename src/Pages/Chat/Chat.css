@@ -17,6 +17,7 @@
 .chatInput {}
 
 .chatPanel {
+    padding: 0px !important;
     background: rgb(0, 216, 216);
     position: absolute;
     width: 100%;

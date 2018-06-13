@@ -30,18 +30,28 @@ export const Chat = {
                 store.current.chat.name = activityDB.data().name;
                 m.redraw();
             })
-        //get chats
+        //get messages
         DB.collection('groupActions')
             .doc(vnode.state.activityId)
             .collection(vnode.state.chatType)
             .onSnapshot(function (snap) {
                 var messagesArray = []
+                var toRedraw = true; //some time it takes time to update time. to prevent double redraw
+
                 snap.forEach(function (doc) {
-                    messagesArray.push(doc.data())
+                    if (doc.data().time != null) {
+                        messagesArray.push(doc.data())
+                    } else {
+                        toRedraw = false;
+                    }
                 })
+
                 vnode.state.messages = messagesArray
 
-                m.redraw()
+                if (toRedraw) { //some time it takes time to update time. to prevent double redraw
+
+                    m.redraw()
+                }
             })
 
     },
@@ -53,6 +63,7 @@ export const Chat = {
         return (
             <div>
                 <div
+                    id='chatHeader'
                     class='headers'
                     onclick={() => { m.route.set('/activity/' + vnode.state.activityId) }}
                 >
@@ -65,7 +76,7 @@ export const Chat = {
                 <div class='panel chatPanel'>
                     <ChatMessages messages={vnode.state.messages} />
 
-                    <div class='chatInputDiv'>
+                    <div class='chatInputDiv' id='chatInputDiv'>
                         <table class='chatInputDivTb'>
                             <tr>
                                 <td>
@@ -99,9 +110,11 @@ function sendMessageToDB(text, vnode) {
     if (text.length > 0) {
         //empty input
         var chatText = chatInput.value;
-        var textLineBreaks = chatText.split(/\n/g)
-        console.dir(store.user)
         chatInput.value = '';
+
+        //split text to paragrphs
+        var textLineBreaks = chatText.split(/\n/g);
+
         // write to DB
         DB.collection('groupActions')
             .doc(vnode.state.activityId)
@@ -111,7 +124,6 @@ function sendMessageToDB(text, vnode) {
                 userName: store.user.displayName || 'אנונימי',
                 userPhoto: store.user.photoURL || '',
                 userUID: store.user.uid
-
             })
     }
 }
