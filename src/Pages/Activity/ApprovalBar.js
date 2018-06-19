@@ -5,10 +5,13 @@ export const ApprovalBar = {
         return (
             <div>
                 <div class='labels'>אחוז תמיכה</div>
-                <div class='ApprovalBarMain'>
-                    <div class='approved'></div>
-                    <div class='pendding'></div>
-                </div>
+                <table class='ApprovalBarMain'>
+                    <tr>
+                        <td class='approved'></td>
+                        <td class='pendding'></td>
+                        <td class='noApproved'></td>
+                    </tr>
+                </table>
             </div>
         )
     }

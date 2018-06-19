@@ -7,8 +7,18 @@
     margin-bottom: 20px;
 }
 
+.ApprovalBarMain td {
+    border-bottom: none
+}
+
 .approved {
     width: 30%;
     height: 100%;
     background: green;
+}
+
+.pendding {
+    width: 20%;
+    height: 100%;
+    background: rgb(206, 221, 2);
 }
