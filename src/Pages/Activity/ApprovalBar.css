@@ -1,0 +1,14 @@
+.ApprovalBarMain {
+    height: 30px;
+    width: 500px;
+    margin: auto;
+    position: relative;
+    background: #deb887;
+    margin-bottom: 20px;
+}
+
+.approved {
+    width: 30%;
+    height: 100%;
+    background: green;
+}

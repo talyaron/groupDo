@@ -1,5 +1,6 @@
 import './Activity.css';
 import { ActivityDescription } from './ActivityDescription';
+import { ApprovalBar } from './ApprovalBar';
 
 import DB from '../../controls/firebaseConfig';
 import store from '../../data/store';
@@ -83,6 +84,7 @@ export const Activity = {
                     </td></tr></table>
                 </div>
                 <div class='panel panelActivity'>
+                    <ApprovalBar />
                     <ActivityDescription
                         description={vnode.state.description}
                         fullExplanation={vnode.state.fullExplanation}

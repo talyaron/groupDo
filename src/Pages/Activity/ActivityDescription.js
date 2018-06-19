@@ -39,6 +39,13 @@ export const ActivityDescription = {
                                     </i>
                                 </td>
                             </tr>
+                            <tr class='chatDoneRow'>
+                                <td class='chatDoneCell'>
+                                    <i class="material-icons activityChat">
+                                        warning
+                                    </i>
+                                </td>
+                            </tr>
                         </td>
 
                     </tr>
@@ -59,6 +66,13 @@ export const ActivityDescription = {
                                 <td class='chatDoneCell'>
                                     <i class="material-icons activityChat">
                                         check_circle_outline
+                                    </i>
+                                </td>
+                            </tr>
+                            <tr class='chatDoneRow'>
+                                <td class='chatDoneCell'>
+                                    <i class="material-icons activityChat">
+                                        warning
                                     </i>
                                 </td>
                             </tr>
@@ -99,6 +113,13 @@ export const ActivityDescription = {
                                     <i class="material-icons activityChat">
                                         check_circle_outline
                                     </i>
+                                </td>
+                            </tr>
+                            <tr class='chatDoneRow'>
+                                <td class='chatDoneCell'>
+                                    <i class="material-icons activityChat">
+                                        warning
+                                        </i>
                                 </td>
                             </tr>
                         </td>
