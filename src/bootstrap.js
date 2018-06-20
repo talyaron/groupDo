@@ -22,7 +22,7 @@ import './controls/firebaseLogin'
 // Global styles
 import "./static/styles/main.scss";
 
-m.route(document.body, "/public", {
+m.route(document.body, "/starts", {
     "/public": Public,
     "/starts": Starts,
     "/groups": Groups,

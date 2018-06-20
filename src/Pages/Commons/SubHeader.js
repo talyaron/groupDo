@@ -14,7 +14,7 @@ export const SubHeader = {
                             <i class="material-icons">
                                 group_work
                                 </i>
-                            קבוצות
+                            קהילות
                         </td>
 
 
