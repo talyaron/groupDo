@@ -153,3 +153,7 @@ th {
 .newChat {
     color: green;
 }
+
+.modalList {
+    padding: 10px !important;
+}
