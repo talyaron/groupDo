@@ -39,7 +39,10 @@ export const ActivityDescription = {
                                     </i>
                                 </td>
                             </tr>
-                            <tr class='chatDoneRow'>
+                            <tr
+                                class='chatDoneRow'
+                                onclick={() => { vnode.attrs.modalCritic.open() }}
+                            >
                                 <td class='chatDoneCell'>
                                     <i class="material-icons activityChat">
                                         warning

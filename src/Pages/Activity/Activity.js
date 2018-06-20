@@ -1,12 +1,16 @@
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import { findIndex } from 'lodash';
+
 import './Activity.css';
 import { ActivityDescription } from './ActivityDescription';
 import { ApprovalBar } from './ApprovalBar';
+import { Critic } from './Critic';
 
 import DB from '../../controls/firebaseConfig';
 import store from '../../data/store';
 
-import firebase from 'firebase/app';
-import 'firebase/auth';
+
 
 import 'materialize-css/dist/css/materialize.css';
 import M from 'materialize-css/dist/js/materialize';
@@ -21,7 +25,10 @@ export const Activity = {
             editName: [],
             resources: [],
             addResource: false,
-            description: ''
+            description: '',
+            modals: {
+                critic: {}
+            }
         }
         vnode.state.id = vnode.attrs.id;
 
@@ -62,6 +69,15 @@ export const Activity = {
 
 
     },
+    oncreate: function (vnode) {
+
+        var elems = document.querySelectorAll('.modal');
+        var instances = M.Modal.init(elems, {});
+        var instanceIndex = findIndex(instances, function (o) { return o.id == "modal1" });
+        vnode.state.modals.critic = instances[instanceIndex];
+
+
+    },
     onbeforeupdate: function (vnode) {
 
     },
@@ -90,6 +106,7 @@ export const Activity = {
                         fullExplanation={vnode.state.fullExplanation}
                         activtyId={vnode.state.id}
                         activityName={vnode.state.name}
+                        modalCritic={vnode.state.modals.critic}
                     />
                     <div class='labels'>מצרכים ומשאבים</div>
                     <div class='resourceCards'>
@@ -192,6 +209,7 @@ export const Activity = {
                             </tr>
                         </table>
                     </div>
+                    <Critic modalCritic={vnode.state.modals.critic} />
                 </div>
 
 
