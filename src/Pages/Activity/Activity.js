@@ -28,6 +28,10 @@ export const Activity = {
             description: '',
             modals: {
                 critic: {}
+            },
+            group: {
+                id: '',
+                name: ''
             }
         }
         vnode.state.id = vnode.attrs.id;
@@ -38,14 +42,24 @@ export const Activity = {
             .onSnapshot(function (doc) {
 
                 vnode.state.name = doc.data().name || 'אין שם לפעילות';
-                vnode.state.description = doc.data().description || 'אין הסבר על הפעילות'
+                vnode.state.description = doc.data().description || 'אין הסבר על הפעילות';
+                vnode.state.group.id = doc.data().groupId || '';
 
                 var explanationText = doc.data().fullExplanation;
                 var explanationArrayText = explanationText.split('<br />');
                 vnode.state.fullExplanation = explanationArrayText;
 
+                //get group name
+                DB.collection('groups').doc(vnode.state.group.id).get().then(function (groupDB) {
+                    vnode.state.group.name = groupDB.data().name;
+
+                    m.redraw();
+                })
                 m.redraw();
             });
+
+
+
         //get resources from DB
 
         DB.collection('groupActions').doc(vnode.state.id).collection('resources')
@@ -86,17 +100,17 @@ export const Activity = {
 
     },
     view: function (vnode) {
+        console.log('/group/' + vnode.state.group.id);
         return (
             <div class='main'>
-                <div
-                    class='headers activityHeader'
-                    onclick={() => { m.route.set('/groups') }}
-                >
+                <div class='headers activityHeader'>
+                    <div class='groupHeader'
+                        onclick={() => {
+                            m.route.set('/group/' + vnode.state.group.id)
+                        }}
+                    >קהילה: {vnode.state.group.name}</div>
                     <table><tr><td class='activityHeaderTd'>
-                        <i class="material-icons menuIcons">
-                            merge_type
-                            </i>
-                        <span>{vnode.state.name}</span>
+                        פעילות: <span>{vnode.state.name}</span>
                     </td></tr></table>
                 </div>
                 <div class='panel panelActivity'>
