@@ -7,7 +7,7 @@ export const MainHeader = {
 
     view: function (vnode) {
         return (
-            <div class='mainHeader'>תכל'ס: עשיה קבוצתית</div>
+            <div class='mainHeader'>תכל'ס: עשיה קהילתית</div>
         )
     }
 }
