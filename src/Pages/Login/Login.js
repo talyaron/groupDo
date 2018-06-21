@@ -7,7 +7,14 @@ import store from '../../data/store';
 export const Login = {
     oncreate: function () {
         // Initialize the FirebaseUI Widget using Firebase.
-        var ui = new firebaseui.auth.AuthUI(firebase.auth());
+        var ui;
+        if (ui) {
+            ui.reset();
+        } else {
+            ui = new firebaseui.auth.AuthUI(firebase.auth());
+        }
+
+
 
         var uiConfig = {
             callbacks: {
@@ -33,8 +40,7 @@ export const Login = {
             signInOptions: [
                 firebase.auth.GoogleAuthProvider.PROVIDER_ID,
                 firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-                firebase.auth.EmailAuthProvider.PROVIDER_ID,
-                firebase.auth.PhoneAuthProvider.PROVIDER_ID
+
             ],
             // Terms of service url.
             tosUrl: '<your-tos-url>'
@@ -45,9 +51,10 @@ export const Login = {
 
     },
     view: function () {
+        console.dir(store)
         return (
             <div>
-                <div class='loginHeader'>אנא התחברו</div>
+                <div class='loginHeader'>כדי להיות שותפים לפעילות, אנא הרשמו</div>
                 <div id="firebaseui-auth-container"></div>
                 <div id="loader">Loading...</div>
             </div>

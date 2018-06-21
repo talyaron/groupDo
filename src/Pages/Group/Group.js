@@ -34,6 +34,7 @@ export const Group = {
                     description: groupDB.data().description
 
                 }
+                store.current.group = vnode.state.group;
 
             } else {
                 // doc.data() will be undefined in this case
@@ -65,9 +66,6 @@ export const Group = {
                 m.redraw();
                 // store.current.group.groupActions = 
             })
-    },
-    onremove: function () {
-        store.current.group = {}
     },
     view: function (vnode) {
 

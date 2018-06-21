@@ -17,6 +17,7 @@ export const ActivityDescription = {
 
         return (
             <div>
+                <p><span class='labels'>יזמ/ית</span>: <span class='simpleText'>{vnode.attrs.creator.name}</span></p>
                 <table>
                     <tr class='descriptionRow'>
                         <th class='labels'>הסבר כללי</th><th></th>
@@ -52,35 +53,7 @@ export const ActivityDescription = {
                         </td>
 
                     </tr>
-                    <tr class='descriptionRow'>
-                        <th class='labels'>תאריך</th><th></th>
-                    </tr>
-                    <tr class='descriptionRow'>
-                        <td class='simpleText'>תאריך</td>
-                        <td class='chatDone'>
-                            <tr class='chatDoneRow'>
-                                <td class='chatDoneCell'>
-                                    <i class="material-icons activityChat">
-                                        chat
-                                    </i>
-                                </td>
-                            </tr>
-                            <tr class='chatDoneRow'>
-                                <td class='chatDoneCell'>
-                                    <i class="material-icons activityChat">
-                                        check_circle_outline
-                                    </i>
-                                </td>
-                            </tr>
-                            <tr class='chatDoneRow'>
-                                <td class='chatDoneCell'>
-                                    <i class="material-icons activityChat">
-                                        warning
-                                    </i>
-                                </td>
-                            </tr>
-                        </td>
-                    </tr>
+
                     <tr class='descriptionRow'>
                         <td class='labels'>תאור הפעילות</td><td></td>
                     </tr>
@@ -123,6 +96,35 @@ export const ActivityDescription = {
                                     <i class="material-icons activityChat">
                                         warning
                                         </i>
+                                </td>
+                            </tr>
+                        </td>
+                    </tr>
+                    <tr class='descriptionRow'>
+                        <th class='labels'>תאריך</th><th></th>
+                    </tr>
+                    <tr class='descriptionRow'>
+                        <td class='simpleText'>תאריך</td>
+                        <td class='chatDone'>
+                            <tr class='chatDoneRow'>
+                                <td class='chatDoneCell'>
+                                    <i class="material-icons activityChat">
+                                        chat
+                                    </i>
+                                </td>
+                            </tr>
+                            <tr class='chatDoneRow'>
+                                <td class='chatDoneCell'>
+                                    <i class="material-icons activityChat">
+                                        check_circle_outline
+                                    </i>
+                                </td>
+                            </tr>
+                            <tr class='chatDoneRow'>
+                                <td class='chatDoneCell'>
+                                    <i class="material-icons activityChat">
+                                        warning
+                                    </i>
                                 </td>
                             </tr>
                         </td>

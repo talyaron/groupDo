@@ -17,6 +17,7 @@ import M from 'materialize-css/dist/js/materialize';
 
 export const Activity = {
     oninit: function (vnode) {
+
         vnode.state = {
             id: '',
             name: '',
@@ -32,9 +33,22 @@ export const Activity = {
             group: {
                 id: '',
                 name: ''
+            },
+            creator: {
+                name: '',
+                id: ''
             }
         }
+        //get activity id from router
         vnode.state.id = vnode.attrs.id;
+
+        //get group id from store if possible
+        vnode.state.group.name = store.current.group.name || '';
+
+        //get from store acitivity details
+        vnode.state.name = store.current.action.name || 'אין שם לפעילות';
+        vnode.state.description = store.current.action.description || 'אין הסבר על הפעילות';
+        vnode.state.group.id = store.current.action.groupId || '';
 
         //get from DB activity details
         vnode.state.unsubscribe = DB.collection('groupActions')
@@ -43,7 +57,9 @@ export const Activity = {
 
                 vnode.state.name = doc.data().name || 'אין שם לפעילות';
                 vnode.state.description = doc.data().description || 'אין הסבר על הפעילות';
+                vnode.state.creator = doc.data().creator || {};
                 vnode.state.group.id = doc.data().groupId || '';
+                store.current.group.id = doc.data().groupId || '';
 
                 var explanationText = doc.data().fullExplanation;
                 var explanationArrayText = explanationText.split('<br />');
@@ -52,9 +68,10 @@ export const Activity = {
                 //get group name
                 DB.collection('groups').doc(vnode.state.group.id).get().then(function (groupDB) {
                     vnode.state.group.name = groupDB.data().name;
-
+                    store.current.group.name = groupDB.data().name;
                     m.redraw();
                 })
+
                 m.redraw();
             });
 
@@ -85,6 +102,7 @@ export const Activity = {
     },
     oncreate: function (vnode) {
 
+
         var elems = document.querySelectorAll('.modal');
         var instances = M.Modal.init(elems, {});
         var instanceIndex = findIndex(instances, function (o) { return o.id == "modal1" });
@@ -92,15 +110,23 @@ export const Activity = {
 
 
     },
-    onbeforeupdate: function (vnode) {
+    onupdate: function (vnode) {
 
+        if (store.user.isAnonymous || Object.keys(store.user).length === 0) {
+            console.log('please login in')
+            store.lastUrl = '#!/activity/' + vnode.state.id;
+            m.route.set('/login')
+        } else {
+            console.log('user is not anonymous')
+            console.dir(store.user)
+        }
     },
     onremove: function (vnode) {
         vnode.state.unsubscribe();
 
     },
     view: function (vnode) {
-        console.log('/group/' + vnode.state.group.id);
+
         return (
             <div class='main'>
                 <div class='headers activityHeader'>
@@ -121,8 +147,9 @@ export const Activity = {
                         activtyId={vnode.state.id}
                         activityName={vnode.state.name}
                         modalCritic={vnode.state.modals.critic}
+                        creator={vnode.state.creator}
                     />
-                    <div class='labels'>מצרכים ומשאבים</div>
+                    <div class='labels'>מצרכים</div>
                     <div class='resourceCards'>
                         <table class='resourceCardTable'>
                             <tr>

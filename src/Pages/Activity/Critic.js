@@ -39,8 +39,7 @@ export const Critic = {
         for (var i in critics) {
             criticsArray.push(critics[i]);
         }
-        console.log('..')
-        console.dir(criticsArray)
+
 
         return (
             <div id="modal1" class="modal">

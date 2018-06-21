@@ -10,13 +10,12 @@ firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
         console.log('User is signed in.')
 
-        // store.user.isAnonymous = user.isAnonymous;
         store.user = {
             uid: user.uid,
             displayName: user.displayName,
             email: user.email,
             photoURL: user.photoURL,
-
+            isAnonymous: user.isAnonymous
         };
 
         DB.collection('users').doc(user.uid).update(store.user).then(function () {
@@ -24,7 +23,6 @@ firebase.auth().onAuthStateChanged(function (user) {
         }).catch(function (error) {
             DB.collection('users').doc(user.uid).set(store.user)
         })
-
 
 
     } else {

@@ -17,8 +17,8 @@ export const StartsCards = {
                         }}
 
                     >
-                        <div class="card blue-grey darken-1">
-                            <div class="card-content white-text">
+                        <div class="card white">
+                            <div class="card-content white-black">
                                 <span class="card-title">{card.name}</span>
                                 <p>{card.description}</p>
                             </div>
