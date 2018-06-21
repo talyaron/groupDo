@@ -1,0 +1,15 @@
+.groupCard {
+    border: 5px solid #0e21d2;
+    border-radius: 10px 30px 10px 20px;
+    box-shadow: 4px 4px 8px;
+    background: #f0f1ff;
+    padding: 10px;
+    user-select: none;
+    cursor: pointer;
+    margin-bottom: 4px;
+}
+
+.groupCardTitle {
+    color: var(--simpleTextDark);
+    font-size: 1.2rem;
+}

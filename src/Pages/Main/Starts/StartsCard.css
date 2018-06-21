@@ -1,0 +1,13 @@
+.activityCard {
+    border: 3px solid #d28d0e;
+    border-radius: 10px 5px 10px 20px;
+    padding: 10px;
+    user-select: none;
+    cursor: pointer;
+    margin-bottom: 4px;
+}
+
+.activityCardTitle {
+    color: var(--simpleTextDark);
+    font-size: 1.2rem;
+}
