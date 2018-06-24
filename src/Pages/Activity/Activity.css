@@ -162,6 +162,8 @@ th {
 
 .chatDoneCell {
     padding: 4px 4px !important;
+    width: 33%;
+    text-align: center;
 }
 
 .chatCounter {

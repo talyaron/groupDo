@@ -21,46 +21,36 @@ export const ActivityDescription = {
             <div>
                 <p><span class='labels'>יזמ/ית</span>: <span class='simpleText'>{vnode.attrs.creator.name}</span></p>
                 <table>
-                    <tr class='descriptionRow'>
-                        <th class='labels'>הסבר כללי</th><th></th>
+                    <tr class='descriptionRow' colspan="3">
+                        <th class='labels'>הסבר כללי</th>
                     </tr>
                     <tr class='descriptionRow'>
-                        <td class='simpleText'>{vnode.attrs.description}</td>
+                        <td class='simpleText' colspan="3">{vnode.attrs.description}</td>
+                    </tr>
 
-                        <td class='chatDone'>
-                            <tr class='chatDoneRow'>
-                                <td class='chatDoneCell'>
-                                    <i class="material-icons activityChat">
-                                        chat
+                    <tr>
+                        <td class='chatDoneCell'>
+                            <i class="material-icons activityChat">
+                                chat
                                     </i>
-                                </td>
-                            </tr>
-                            <tr class='chatDoneRow'>
-                                <td class='chatDoneCell'>
-                                    <i class="material-icons activityChat">
-                                        check_circle_outline
-                                    </i>
-                                </td>
-                            </tr>
-                            <tr
-                                class='chatDoneRow'
-                                onclick={() => { vnode.attrs.modalCritic.open() }}
-                            >
-                                <td class='chatDoneCell'>
-                                    <i class="material-icons activityChat">
-                                        warning
-                                    </i>
-                                </td>
-                            </tr>
                         </td>
-
+                        <td class='chatDoneCell'>
+                            <i class="material-icons activityChat">
+                                check_circle_outline
+                                    </i>
+                        </td>
+                        <td class='chatDoneCell'
+                            onclick={() => { vnode.attrs.modalCritic.open() }}>
+                            <i class="material-icons activityChat">
+                                warning
+                                    </i>
+                        </td>
                     </tr>
-
                     <tr class='descriptionRow'>
-                        <td class='labels'>תאור הפעילות</td><td></td>
+                        <td class='labels' colspan="3">תאור הפעילות</td>
                     </tr>
                     <tr class='descriptionRow'>
-                        <td>
+                        <td colspan="3">
                             <div class='simpleText'>
                                 {vnode.attrs.fullExplanation.map(function (text) {
                                     return (
@@ -69,38 +59,24 @@ export const ActivityDescription = {
                                 })}
                             </div>
                         </td>
-                        <td class='chatDone'>
-                            <tr class='chatDoneRow'>
-                                <td class='chatDoneCell'
-                                    onclick={() => {
-                                        m.route.set('/chat/' + vnode.attrs.activtyId + '__chatDescription');
-                                        store.current.chat.name = vnode.attrs.activityName;
-                                    }}
-                                >
-                                    <i class={(vnode.state.descriptionChatCounter > 0)
-                                        ? 'material-icons activityChat newChat'
-                                        : 'material-icons activityChat'}>
-                                        chat
+                    </tr>
+                    <tr>
+                        <td class='chatDoneCell'>
+                            <i class="material-icons activityChat">
+                                chat
                                     </i>
-                                    <div
-                                        class='chatCounter'>{vnode.state.descriptionChatCounter}</div>
-                                </td>
-                            </tr>
-                            <tr class='chatDoneRow'>
-                                <td class='chatDoneCell'>
-                                    <i class="material-icons activityChat">
-                                        check_circle_outline
-                                    </i>
-                                </td>
-                            </tr>
-                            <tr class='chatDoneRow'>
-                                <td class='chatDoneCell'>
-                                    <i class="material-icons activityChat">
-                                        warning
-                                        </i>
-                                </td>
-                            </tr>
                         </td>
+                        <td class='chatDoneCell'>
+                            <i class="material-icons activityChat">
+                                check_circle_outline
+                                    </i>
+                        </td>
+                        <td class='chatDoneCell'>
+                            <i class="material-icons activityChat">
+                                warning
+                                    </i>
+                        </td>
+
                     </tr>
                     <tr class='descriptionRow'>
                         <th class='labels'>מתנדבים</th><th></th>
@@ -113,32 +89,26 @@ export const ActivityDescription = {
                         <th class='labels'>תאריך</th><th></th>
                     </tr>
                     <tr class='descriptionRow'>
-                        <td class='simpleText'>תאריך</td>
-                        <td class='chatDone'>
-                            <tr class='chatDoneRow'>
-                                <td class='chatDoneCell'>
-                                    <i class="material-icons activityChat">
-                                        chat
+                        <td class='simpleText'>10/2/18</td>
+                    </tr>
+                    <tr>
+                        <td class='chatDoneCell'>
+                            <i class="material-icons activityChat">
+                                chat
                                     </i>
-                                </td>
-                            </tr>
-                            <tr class='chatDoneRow'>
-                                <td class='chatDoneCell'>
-                                    <i class="material-icons activityChat">
-                                        check_circle_outline
+                        </td>
+                        <td class='chatDoneCell'>
+                            <i class="material-icons activityChat">
+                                check_circle_outline
                                     </i>
-                                </td>
-                            </tr>
-                            <tr class='chatDoneRow'>
-                                <td class='chatDoneCell'>
-                                    <i class="material-icons activityChat">
-                                        warning
+                        </td>
+                        <td class='chatDoneCell'>
+                            <i class="material-icons activityChat">
+                                warning
                                     </i>
-                                </td>
-                            </tr>
                         </td>
                     </tr>
-                </table>
+                </table >
             </div >
         )
     }

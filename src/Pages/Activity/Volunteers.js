@@ -13,7 +13,7 @@ export const Volunteers = {
     view: function (vnode) {
 
         return (
-            <tr><td>
+            <tr><td colspan="3">
                 {
                     vnode.attrs.volunteers.map(function (volunteer, index) {
                         //check if user has joined
