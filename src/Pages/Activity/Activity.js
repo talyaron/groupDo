@@ -107,7 +107,7 @@ export const Activity = {
                     volunteersArray.push(volunteerDB.data())
                 })
                 vnode.state.volunteers = volunteersArray;
-                console.log(vnode.state.volunteers)
+
                 m.redraw();
             })
     },
@@ -123,13 +123,11 @@ export const Activity = {
     },
     onupdate: function (vnode) {
 
+        //if user is anonymous, redirect to login
         if (store.user.isAnonymous || Object.keys(store.user).length === 0) {
             console.log('please login in')
             store.lastUrl = '#!/activity/' + vnode.state.id;
             m.route.set('/login')
-        } else {
-            console.log('user is not anonymous')
-
         }
     },
     onremove: function (vnode) {

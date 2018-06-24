@@ -31,8 +31,8 @@ export const Group = {
             if (groupDB.exists) {
                 vnode.state.group = {
                     name: groupDB.data().name,
-                    description: groupDB.data().description
-
+                    description: groupDB.data().description,
+                    img: groupDB.data().img
                 }
                 store.current.group = vnode.state.group;
 
@@ -79,8 +79,10 @@ export const Group = {
                     <div class='groupSubHeader'>קבוצה: {vnode.state.group.name}</div>
                 </div>
                 <div class='panel'>
+                    <img class='groupImg' src={vnode.state.group.img} />
                     <p class='labels'>תאור</p>
                     <p class='simpleText'>{vnode.state.group.description}</p>
+
                     <p class='labels'>פעולות</p>
                     <div class="row">
                         <StartsCards cards={vnode.state.group.actions} />

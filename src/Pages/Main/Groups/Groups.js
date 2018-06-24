@@ -20,7 +20,8 @@ export const Groups = {
                 var group = {};
                 group.id = groupDB.id;
                 group.name = groupDB.data().name || 'ללא שם';
-                group.description = groupDB.data().description || 'ללא תאור'
+                group.description = groupDB.data().description || 'ללא תאור';
+                group.img = groupDB.data().img || '';
                 cardsDB.push(group);
             });
             vnode.state.cards = cardsDB;

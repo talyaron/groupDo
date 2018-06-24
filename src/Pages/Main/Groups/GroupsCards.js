@@ -19,7 +19,7 @@ export const GroupCards = {
 
                             }}
                         >
-                            <img src='https://ichef.bbci.co.uk/onesport/cps/800/cpsprodpb/142DE/production/_102145628_hi047614370.jpg' />
+                            {(card.img || card.img != '') ? <img class='groupImg groupImgMain' src={card.img} /> : <div />}
                             <span class="activityCardTitle">{card.name}</span>
                             <p>{card.description}</p>
 

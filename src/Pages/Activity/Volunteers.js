@@ -11,8 +11,7 @@ export const Volunteers = {
         vnode.state = { isJoined: false }
     },
     view: function (vnode) {
-        console.dir(vnode.attrs.volunteers)
-        console.log(vnode.state.isJoined)
+
         return (
             <tr><td>
                 {
@@ -21,16 +20,18 @@ export const Volunteers = {
                         if (volunteer.uid == store.user.uid) { vnode.state.isJoined = true }
                         return (
                             <div class="chip right" key={index}>
-                                {volunteer.displayName}
+
                                 <img src={volunteer.photoURL} alt="Contact Person" />
+                                {volunteer.displayName}
                                 {(volunteer.uid == store.user.uid) ?
                                     <i
-                                        class="close material-icons"
+                                        class=" material-icons right volunteerRemove"
                                         onclick={() => { removeVolunteer(vnode) }}
                                     >close</i>
                                     :
                                     <div />
                                 }
+
                             </div>
                         )
                     })
