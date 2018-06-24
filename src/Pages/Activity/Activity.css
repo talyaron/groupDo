@@ -4,13 +4,13 @@ th {
 
 .activityHeader {
     background: var(--mainColorStrong);
-    color: var(--mainTextStrong);
 }
 
 .activityHeaderTd {
     /* vertical-align: middle; */
     text-align: center;
     padding: 5px 5px;
+    color: var(--secondTextStrong);
 }
 
 .resourceCards {
@@ -108,6 +108,22 @@ th {
 
 .newResource {
     animation: fade-in 0.5s;
+}
+
+.joinVolunteers {
+    display: inline-block;
+    height: 32px;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.6);
+    line-height: 32px;
+    padding: 0 12px;
+    border-radius: 16px;
+    background-color: #afafaf;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    cursor: pointer;
+    user-select: none;
 }
 
 @keyframes fade-in {

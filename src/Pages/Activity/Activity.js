@@ -25,6 +25,7 @@ export const Activity = {
             editAmount: [],
             editName: [],
             resources: [],
+            volunteers: [],
             addResource: false,
             description: '',
             modals: {
@@ -97,8 +98,18 @@ export const Activity = {
 
             })
 
+        //get volunteers from DB
 
-
+        DB.collection('groupActions').doc(vnode.state.id).collection('volunteers')
+            .onSnapshot(volunteersDB => {
+                var volunteersArray = [];
+                volunteersDB.forEach(volunteerDB => {
+                    volunteersArray.push(volunteerDB.data())
+                })
+                vnode.state.volunteers = volunteersArray;
+                console.log(vnode.state.volunteers)
+                m.redraw();
+            })
     },
     oncreate: function (vnode) {
 
@@ -118,7 +129,7 @@ export const Activity = {
             m.route.set('/login')
         } else {
             console.log('user is not anonymous')
-            console.dir(store.user)
+
         }
     },
     onremove: function (vnode) {
@@ -148,6 +159,7 @@ export const Activity = {
                         activityName={vnode.state.name}
                         modalCritic={vnode.state.modals.critic}
                         creator={vnode.state.creator}
+                        volunteers={vnode.state.volunteers}
                     />
                     <div class='labels'>מצרכים</div>
                     <div class='resourceCards'>

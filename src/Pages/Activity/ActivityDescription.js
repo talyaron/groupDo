@@ -2,6 +2,8 @@ import './Activity.css';
 import DB from '../../controls/firebaseConfig';
 import store from '../../data/store';
 
+import { Volunteers } from './Volunteers';
+
 export const ActivityDescription = {
 
     oninit: function (vnode) {
@@ -100,6 +102,13 @@ export const ActivityDescription = {
                             </tr>
                         </td>
                     </tr>
+                    <tr class='descriptionRow'>
+                        <th class='labels'>מתנדבים</th><th></th>
+                    </tr>
+                    <Volunteers
+                        volunteers={vnode.attrs.volunteers}
+                        activtyId={vnode.attrs.activtyId}
+                    />
                     <tr class='descriptionRow'>
                         <th class='labels'>תאריך</th><th></th>
                     </tr>

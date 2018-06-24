@@ -3,6 +3,7 @@
     --mainTextStrong: white;
     --mainColorMiddle: #3f51b5;
     --simpleTextDark: rgba(0, 0, 0, 0.68);
+    --secondTextStrong: #ffffffad;
 }
 
 body {
