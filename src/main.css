@@ -22,6 +22,7 @@ body {
     background: var(--mainColorStrong);
     color: var(--mainTextStrong);
     padding: 4px;
+    user-select: none;
 }
 
 .menuIcons {
