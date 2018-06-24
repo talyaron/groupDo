@@ -78,14 +78,16 @@ export const Group = {
                     <MainHeader />
                     <div class='groupSubHeader'>קבוצה: {vnode.state.group.name}</div>
                 </div>
-                <div class='panel'>
-                    <img class='groupImg' src={vnode.state.group.img} />
-                    <p class='labels'>תאור</p>
-                    <p class='simpleText'>{vnode.state.group.description}</p>
+                <div class='container'>
+                    <div class='panel'>
+                        <img class='groupImg' src={vnode.state.group.img} />
+                        <p class='labels'>תאור</p>
+                        <p class='simpleText'>{vnode.state.group.description}</p>
 
-                    <p class='labels'>פעולות</p>
-                    <div class="row">
-                        <StartsCards cards={vnode.state.group.actions} />
+                        <p class='labels'>פעולות</p>
+                        <div class="row">
+                            <StartsCards cards={vnode.state.group.actions} />
+                        </div>
                     </div>
                 </div>
             </div >

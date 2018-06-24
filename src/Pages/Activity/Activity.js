@@ -148,122 +148,130 @@ export const Activity = {
                         פעילות: <span>{vnode.state.name}</span>
                     </td></tr></table>
                 </div>
-                <div class='panel panelActivity'>
-                    <ApprovalBar />
-                    <ActivityDescription
-                        description={vnode.state.description}
-                        fullExplanation={vnode.state.fullExplanation}
-                        activtyId={vnode.state.id}
-                        activityName={vnode.state.name}
-                        modalCritic={vnode.state.modals.critic}
-                        creator={vnode.state.creator}
-                        volunteers={vnode.state.volunteers}
-                    />
-                    <div class='labels'>מצרכים</div>
-                    <div class='resourceCards'>
-                        <table class='resourceCardTable'>
-                            <tr>
-                                <th></th>
-                                <th>שם</th>
-                                <th class='resourceAmount'>כמות</th>
-                                <th>אחראי/ת</th>
-                                <th>מחיקה</th>
-                            </tr>
-                            {vnode.state.resources.map(function (resource) {
+                <div class='container'>
+                    <div class='panel panelActivity'>
+                        <ApprovalBar />
+                        <ActivityDescription
+                            description={vnode.state.description}
+                            fullExplanation={vnode.state.fullExplanation}
+                            activtyId={vnode.state.id}
+                            activityName={vnode.state.name}
+                            modalCritic={vnode.state.modals.critic}
+                            creator={vnode.state.creator}
+                            volunteers={vnode.state.volunteers}
+                        />
+                        <div class='labels'>מצרכים</div>
+                        <div class='resourceCards'>
+                            <table class='resourceCardTable'>
+                                <tr>
+                                    <th></th>
+                                    <th>שם</th>
+                                    <th class='resourceAmount'>כמות</th>
+                                    <th>אחראי/ת</th>
+                                    <th>מחיקה</th>
+                                </tr>
+                                {vnode.state.resources.map(function (resource) {
 
-                                return (
-                                    <tr class='newResource'>
-                                        <td><label><input type="checkbox"
-                                            name={resource.id}
-                                            style='opacity:1; position:relative; margin:3px' />
-                                        </label>
-                                        </td>
-                                        <td
-                                            id={'name_' + resource.id}
-                                            onclick={(e) => { editName(e) }}
-                                            onkeyup={(e) => { setNameToDb(e, vnode) }}
-                                            onblur={(e) => { setNameToDb(e, vnode) }}
-                                        >
-                                            {resource.name}
-                                        </td>
-                                        <td
-                                            id={'amount_' + resource.id}
-                                            class='resourceAmount'
-                                            onclick={(e) => { editAmount(e, vnode, resource.amount) }}
-                                        >
-                                            {(vnode.state.editAmount[resource.id]) ?
-                                                <input
-                                                    id={'amountIn' + resource.id}
-                                                    type='number'
-                                                    value={Number(resource.amount)}
-                                                    onchange={(e) => { resource.amount = e.target.value }}
-                                                    onblur={(e) => { addAmountToDB(e, vnode) }}
-                                                    onkeyup={(e) => { resource.amount = e.target.value; addAmountToDB(e, vnode) }} />
-                                                : resource.amount}
-                                        </td>
-                                        <td
-                                            class={(resource.responsibleName) ? 'responsibleTrue' : 'responsibleFalse'}
-                                            id={resource.id}
-                                            onclick={(e) => {
-                                                setResponsibilty(e.target.id, vnode.state.id, store.user.uid, store.user.displayName, vnode)
-                                            }}>
-
-                                            {(resource.responsibleName) ? resource.responsibleName : 'קחו אחריות'}
-                                        </td>
-                                        <td class='deleteResourceTd'>
-                                            <i
-                                                class="material-icons deleteResource"
-                                                id={'delete_' + resource.id}
-                                                onclick={(e) => { deleteResource(e, vnode) }}
+                                    return (
+                                        <tr class='newResource'>
+                                            <td><label><input type="checkbox"
+                                                name={resource.id}
+                                                style='opacity:1; position:relative; margin:3px' />
+                                            </label>
+                                            </td>
+                                            <td
+                                                id={'name_' + resource.id}
+                                                onclick={(e) => { editName(e) }}
+                                                onkeyup={(e) => { setNameToDb(e, vnode) }}
+                                                onblur={(e) => { setNameToDb(e, vnode) }}
                                             >
-                                                delete
+                                                {resource.name}
+                                            </td>
+                                            <td
+                                                id={'amount_' + resource.id}
+                                                class='resourceAmount'
+                                                onclick={(e) => { editAmount(e, vnode, resource.amount) }}
+                                            >
+                                                {(vnode.state.editAmount[resource.id]) ?
+                                                    <input
+                                                        id={'amountIn' + resource.id}
+                                                        type='number'
+                                                        value={Number(resource.amount)}
+                                                        onchange={(e) => { resource.amount = e.target.value }}
+                                                        onblur={(e) => { addAmountToDB(e, vnode) }}
+                                                        onkeyup={(e) => { resource.amount = e.target.value; addAmountToDB(e, vnode) }} />
+                                                    : resource.amount}
+                                            </td>
+                                            <td
+                                                class={(resource.responsibleName) ? 'responsibleTrue' : 'responsibleFalse'}
+                                                id={resource.id}
+                                                onclick={(e) => {
+                                                    setResponsibilty(e.target.id, vnode.state.id, store.user.uid, store.user.displayName, vnode)
+                                                }}>
+
+                                                {(resource.responsibleName) ? resource.responsibleName :
+                                                    <div
+                                                        class='waves-effect waves-light btn'
+                                                        id={resource.id}
+                                                        onclick={(e) => { setResponsibilty(e.target.id, vnode.state.id, store.user.uid, store.user.displayName, vnode) }}>
+                                                        קחו אחריות
+                                                    </div>
+                                                }
+                                            </td>
+                                            <td class='deleteResourceTd'>
+                                                <i
+                                                    class="material-icons deleteResource"
+                                                    id={'delete_' + resource.id}
+                                                    onclick={(e) => { deleteResource(e, vnode) }}
+                                                >
+                                                    delete
                                         </i>
+                                            </td>
+                                        </tr>
+                                    )
+                                })}
+                                {(vnode.state.addResource) ?
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <input type='text' autofocus placeholder='שם הפריט' id='rsName' />
+                                        </td>
+                                        <td>
+                                            <input type='number' placeholder='כמות' id='rsAmount' />
+                                        </td>
+                                        <td class='confirmResource'
+                                            onclick={() => { addResourceToDB(vnode); vnode.state.addResource = false }}
+                                        >
+                                            הוספה
+                                        </td>
+                                        <td
+                                            class='cancelResource'
+                                            onclick={() => { cancelResource(); vnode.state.addResource = false }}
+                                        >
+                                            ביטול
                                         </td>
                                     </tr>
-                                )
-                            })}
-                            {(vnode.state.addResource) ?
+                                    :
+                                    <tr></tr>
+                                }
                                 <tr>
-                                    <td></td>
-                                    <td>
-                                        <input type='text' autofocus placeholder='שם הפריט' id='rsName' />
-                                    </td>
-                                    <td>
-                                        <input type='number' placeholder='כמות' id='rsAmount' />
-                                    </td>
-                                    <td class='confirmResource'
-                                        onclick={() => { addResourceToDB(vnode); vnode.state.addResource = false }}
-                                    >
-                                        הוספה
-                                        </td>
                                     <td
-                                        class='cancelResource'
-                                        onclick={() => { cancelResource(); vnode.state.addResource = false }}
+                                        colspan="2"
+                                        class='addResource'
+                                        onclick={() => { toggleAddResource(vnode) }}
+
                                     >
-                                        ביטול
-                                        </td>
-                                </tr>
-                                :
-                                <tr></tr>
-                            }
-                            <tr>
-                                <td
-                                    colspan="2"
-                                    class='addResource'
-                                    onclick={() => { toggleAddResource(vnode) }}
-
-                                >
-                                    <i class="material-icons">
-                                        add
+                                        <i class="material-icons">
+                                            add
                                     </i>
-                                </td>
-                            </tr>
-                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <Critic modalCritic={vnode.state.modals.critic} />
                     </div>
-                    <Critic modalCritic={vnode.state.modals.critic} />
+
                 </div>
-
-
             </div>
         )
     }
