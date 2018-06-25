@@ -7,7 +7,11 @@ import { Volunteers } from './Volunteers';
 export const ActivityDescription = {
 
     oninit: function (vnode) {
-        vnode.state = { descriptionChatCounter: 0 }
+
+        vnode.state = {
+            descriptionChatCounter: 0,
+            descriptionActive: false
+        }
         //get chats counter
         DB.collection('groupActions').doc(vnode.attrs.activtyId)
             .collection('chatDescription').onSnapshot(function (chatsDB) {
@@ -25,7 +29,7 @@ export const ActivityDescription = {
                         <th class='labels'>הסבר כללי</th>
                     </tr>
                     <tr class='descriptionRow'>
-                        <td class='simpleText' colspan="3">{vnode.attrs.description}</td>
+                        <td class='simpleText' colspan="3" id='generalDescription'>{vnode.attrs.description}</td>
                     </tr>
 
                     <tr>
@@ -51,13 +55,22 @@ export const ActivityDescription = {
                     </tr>
                     <tr class='descriptionRow'>
                         <td colspan="3">
-                            <div class='simpleText'>
+                            <div
+                                class='simpleText'
+                                id='activityDescription'
+                                onclick={(event) => {
+                                    editText('activityDescription', vnode)
+                                }}>
                                 {vnode.attrs.fullExplanation.map(function (text) {
                                     return (
                                         <p>{text}</p>
                                     )
                                 })}
                             </div>
+                            {(vnode.state.descriptionActive) ? <div
+                                class="waves-effect waves-light btn"
+                                onclick={() => { updateText('activityDescription', vnode) }}
+                            >עדכון</div> : <div />}
                         </td>
                     </tr>
                     <tr>
@@ -112,4 +125,36 @@ export const ActivityDescription = {
             </div >
         )
     }
+}
+
+function editText(id, vnode) {
+
+    var element = document.getElementById(id);
+    element.setAttribute("contenteditable", true);
+    vnode.state.descriptionActive = true;
+}
+
+function updateText(id, vnode) {
+    var element = document.getElementById(id);
+    element.setAttribute("contenteditable", false);
+    vnode.state.descriptionActive = false;
+
+    var tempText = '';
+    for (var i = 0; i < element.children.length; i++) {
+        var nextLine = '';
+        if (element.children.length !== i + 1) {
+            nextLine = '<br />'
+        }
+        console.log(i, element.children[i].innerText, element.children.length)
+        tempText += element.children[i].innerText + nextLine;
+    }
+    switch (id) {
+        case 'activityDescription':
+            DB.collection('groupActions').doc(vnode.attrs.activtyId).update({ fullExplanation: tempText });
+            break;
+        case 'generalDescription':
+            DB.collection('groupActions').doc(vnode.attrs.activtyId).update({ description: tempText });
+
+    }
+
 }
