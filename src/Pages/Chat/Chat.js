@@ -84,6 +84,7 @@ export const Chat = {
                                         id="chatInput"
                                         class="chatInput"
                                         autofocus
+                                        onkeyup={(e) => checkShiftEnter(e, chatInput.value, vnode)}
                                     >
                                     </textarea>
                                 </td>
@@ -125,5 +126,13 @@ function sendMessageToDB(text, vnode) {
                 userPhoto: store.user.photoURL || '',
                 userUID: store.user.uid
             })
+    }
+}
+
+function checkShiftEnter(event, value, vnode) {
+
+    if (event.keyCode === 13 && event.shiftKey) {
+
+        sendMessageToDB(value, vnode)
     }
 }
