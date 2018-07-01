@@ -1,5 +1,6 @@
 import './ChatMessages.css';
 
+
 export const ChatMessages = {
     oninit: function (vnode) {
 
@@ -16,6 +17,7 @@ export const ChatMessages = {
         var inputHeight = chatInputDiv.clientHeight;
         var windowHeight = window.innerHeight;
         messagesPanel.style.height = (windowHeight - (headerHeight + inputHeight)) + 'px';
+        messagesPanel.style.transition = '1s all'
 
     },
     onbeforeupdate: function (vnode) {
@@ -28,6 +30,7 @@ export const ChatMessages = {
     onupdate: function (vnode) {
         //scroll to bottom of messages
         messagesPanel.scrollTop = messagesPanel.scrollHeight;
+
     },
     view: function (vnode) {
 
@@ -52,7 +55,7 @@ export const ChatMessages = {
 
                         return (
                             <div class={(isLast) ? 'messageBox newMessage' : 'messageBox'}>
-                                <div class='simpleText'>
+                                <div class={(isLast) ? 'simpleText newMessage' : 'simpleText'}>
                                     {
                                         messagePargraphs.map(function (parg) {
                                             return (
@@ -61,7 +64,7 @@ export const ChatMessages = {
                                         })
                                     }
                                 </div>
-                                <p>{message.userName}</p>
+                                <div class='chatUserName'>{message.userName}</div>
                             </div>
                         )
                     })
