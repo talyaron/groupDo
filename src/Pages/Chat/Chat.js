@@ -73,7 +73,7 @@ export const Chat = {
                     {chatNames[vnode.state.chatType]}
                     {store.current.chat.name}
                 </div>
-                <div class='panel chatPanel'>
+                <div class='chatPanel'>
                     <ChatMessages messages={vnode.state.messages} />
 
                     <div class='chatInputDiv' id='chatInputDiv'>

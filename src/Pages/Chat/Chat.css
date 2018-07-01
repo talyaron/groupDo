@@ -1,5 +1,5 @@
 .chatInputDiv {
-    position: relative;
+    position: fixed;
     bottom: 0px;
     left: 0px;
     width: 100%;
@@ -17,11 +17,11 @@
 .chatInput {}
 
 .chatPanel {
-    padding: 0px !important;
-    background: rgb(0, 216, 216);
-    position: absolute;
+    padding-top: 30px;
+    background: #ebffff;
+    position: relative;
     width: 100%;
-    bottom: 0px;
+    top: 0px;
     left: 0px;
 }
 
