@@ -79,10 +79,10 @@ export const Chat = {
                     <div class='chatInputDiv' id='chatInputDiv'>
                         <table class='chatInputDivTb'>
                             <tr>
-                                <td>
+                                <td class='chatInputField'>
                                     <textarea
                                         id="chatInput"
-                                        class="materialize-textarea chatInput"
+                                        class="chatInput"
                                         autofocus
                                     >
                                     </textarea>

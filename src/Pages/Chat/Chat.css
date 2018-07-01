@@ -14,7 +14,14 @@
     transform: translateX(50%);
 }
 
-.chatInput {}
+.chatInput {
+    max-height: 5rem;
+    height: 5rem;
+}
+
+.chatInputField {
+    padding: 0px !important;
+}
 
 .chatPanel {
     padding-top: 30px;
