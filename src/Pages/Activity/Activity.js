@@ -273,7 +273,7 @@ export const Activity = {
                     </div>
 
                 </div>
-                <Footer />
+                <Footer acitivitId={vnode.attrs.id} />
             </div>
         )
     }

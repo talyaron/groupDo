@@ -16,7 +16,7 @@ export const Chat = {
             chatType: '',
             messages: []
         }
-
+        console.log('chat act id:', vnode.attrs.id)
         var refArrayStr = vnode.attrs.id;
         var refArray = refArrayStr.split('__')
 
