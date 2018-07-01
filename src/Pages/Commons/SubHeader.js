@@ -8,14 +8,14 @@ export const SubHeader = {
             <div class='subHeader'>
                 <table>
                     <tr>
-                        <td
+                        {/* <td
                             class={(vnode.attrs.selector == 'Groups') ? 'menuCell selected' : 'menuCell'}
                             onclick={() => { m.route.set('/groups') }}>
                             <i class="material-icons">
                                 group_work
                                 </i>
                             קהילות
-                        </td>
+                        </td> */}
 
 
                         <td

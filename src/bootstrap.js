@@ -25,8 +25,6 @@ import "./static/styles/main.scss";
 m.route(document.body, "/starts", {
     "/public": Public,
     "/starts": Starts,
-    "/groups": Groups,
-    "/group/:id": Group,
     '/activity/:id': Activity,
     '/chats': Chats,
     '/chat/:id': Chat,

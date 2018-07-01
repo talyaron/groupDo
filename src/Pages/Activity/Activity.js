@@ -141,9 +141,9 @@ export const Activity = {
                 <div class='headers activityHeader'>
                     <div class='groupHeader'
                         onclick={() => {
-                            m.route.set('/group/' + vnode.state.group.id)
+                            m.route.set('/starts')
                         }}
-                    >קהילה: {vnode.state.group.name}</div>
+                    >תכל'ס: עשיה קהילתית</div>
                     <table><tr><td class='activityHeaderTd'>
                         פעילות: <span>{vnode.state.name}</span>
                     </td></tr></table>
