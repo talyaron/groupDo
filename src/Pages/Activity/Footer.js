@@ -10,7 +10,7 @@ export const Footer = {
                             class='footerButtons'
                             onclick={() => { m.route.set('/starts') }}
                         >
-                            <i class="material-icons small">arrow_forward</i>
+                            <i class="material-icons small buttons">arrow_forward</i>
                         </td>
                         <td class='footerButtons'
                             onclick={() => { m.route.set('/chat/' + vnode.attrs.acitivitId + '__general') }}

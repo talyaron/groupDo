@@ -4,3 +4,7 @@
     text-align: center;
     padding: 6px;
 }
+
+.buttons {
+    user-select: none;
+}

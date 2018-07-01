@@ -41,9 +41,9 @@
     width: 60px;
     user-select: none;
     cursor: pointer;
+    text-align: center;
 }
 
 .sendMessage {
     position: relative;
-    left: 30px;
 }

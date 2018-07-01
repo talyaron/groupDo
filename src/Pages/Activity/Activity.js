@@ -212,7 +212,7 @@ export const Activity = {
 
                                                 {(resource.responsibleName) ? resource.responsibleName :
                                                     <div
-                                                        class='waves-effect waves-light btn'
+                                                        class='waves-effect waves-light btn buttons'
                                                         id={resource.id}
                                                         onclick={(e) => { setResponsibilty(e.target.id, vnode.state.id, store.user.uid, store.user.displayName, vnode) }}>
                                                         קחו אחריות

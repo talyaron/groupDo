@@ -79,6 +79,14 @@ export const Chat = {
                     <div class='chatInputDiv' id='chatInputDiv'>
                         <table class='chatInputDivTb'>
                             <tr>
+                                <td
+                                    class='sendMessageTd'
+                                    onclick={() => { m.route.set('/activity/' + vnode.state.activityId) }}
+                                >
+                                    <i class="material-icons sendMessage">
+                                        arrow_forward
+                                    </i>
+                                </td>
                                 <td class='chatInputField'>
                                     <textarea
                                         id="chatInput"
@@ -130,6 +138,7 @@ function sendMessageToDB(text, vnode) {
 }
 
 function checkShiftEnter(event, value, vnode) {
+    //if yes, send texterea input to DB
 
     if (event.keyCode === 13 && event.shiftKey) {
 

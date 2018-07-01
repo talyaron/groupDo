@@ -38,7 +38,8 @@ th {
 
 .panelActivity {
     max-width: 550px;
-    margin: auto;
+    /* margin: auto; */
+    margin-bottom: 60px;
 }
 
 .responsible {
