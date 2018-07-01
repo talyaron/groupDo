@@ -1,0 +1,6 @@
+.footerButtons {
+    user-select: none;
+    cursor: pointer;
+    text-align: center;
+    padding: 6px;
+}

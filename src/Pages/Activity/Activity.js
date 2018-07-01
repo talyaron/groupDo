@@ -6,6 +6,7 @@ import './Activity.css';
 import { ActivityDescription } from './ActivityDescription';
 import { ApprovalBar } from './ApprovalBar';
 import { Critic } from './Critic';
+import { Footer } from './Footer';
 
 import DB from '../../controls/firebaseConfig';
 import store from '../../data/store';
@@ -272,6 +273,7 @@ export const Activity = {
                     </div>
 
                 </div>
+                <Footer />
             </div>
         )
     }
