@@ -10,7 +10,11 @@ export const ActivityDescription = {
 
         vnode.state = {
             descriptionChatCounter: 0,
-            descriptionActive: false
+            descriptionActive: false,
+            chats: {
+                description: 0,
+                explanation: 0,
+            }
         }
         //get chats counter
         DB.collection('groupActions').doc(vnode.attrs.activtyId)
@@ -18,6 +22,16 @@ export const ActivityDescription = {
                 vnode.state.descriptionChatCounter = chatsDB.size
                 m.redraw();
             })
+    },
+    onupdate: function (vnode) {
+        if (store.chats.hasOwnProperty(vnode.attrs.activtyId)) {
+            if (store.chats[vnode.attrs.activtyId].hasOwnProperty('explanation')) {
+                vnode.state.chats.explanation = store.chats[vnode.attrs.activtyId].explanation;
+            }
+            if (store.chats[vnode.attrs.activtyId].hasOwnProperty('description')) {
+                vnode.state.chats.description = store.chats[vnode.attrs.activtyId].description;
+            }
+        }
     },
     view: function (vnode) {
 
@@ -40,6 +54,7 @@ export const ActivityDescription = {
                             <i class="material-icons activityChat">
                                 chat
                                     </i>
+                            <div class='chatsCounter'>{vnode.state.chats.description}</div>
                         </td>
                         <td class='chatDoneCell'>
                             <i class="material-icons activityChat">
@@ -84,6 +99,7 @@ export const ActivityDescription = {
                             <i class="material-icons activityChat">
                                 chat
                                     </i>
+                            <div class='chatsCounter'>{vnode.state.chats.explanation}</div>
                         </td>
                         <td class='chatDoneCell'>
                             <i class="material-icons activityChat">

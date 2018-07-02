@@ -183,3 +183,11 @@ th {
 .modalList {
     padding: 10px !important;
 }
+
+.chatsCounter {
+    position: relative;
+    width: 20px;
+    top: -35px;
+    height: 0px;
+    left: -20px;
+}
