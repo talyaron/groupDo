@@ -14,14 +14,23 @@ export const Chat = {
         vnode.state = {
             activityId: '',
             chatType: '',
+            typeOfChatName: '',
             messages: []
         }
 
         var refArrayStr = vnode.attrs.id;
         var refArray = refArrayStr.split('__')
 
+        const typeOfChatNameObj = {
+            general: 'שיחה כללית',
+            description: 'תאור הפעילות',
+            explanation: 'הסבר על הפעילות'
+        }
+
         vnode.state.activityId = refArray[0];
         vnode.state.chatType = refArray[1];
+        vnode.state.typeOfChatName = typeOfChatNameObj[vnode.state.chatType] || 'כללי'
+
 
         //get chat details
         DB.collection('groupActions')
@@ -83,7 +92,9 @@ export const Chat = {
                     </i>
                     {chatNames[vnode.state.chatType]}
                     {store.current.chat.name}
+                    <div class='typeOfChat'>{vnode.state.typeOfChatName}</div>
                 </div>
+
                 <div class='chatPanel'>
                     <ChatMessages messages={vnode.state.messages} />
 

@@ -33,7 +33,10 @@ export const ActivityDescription = {
                     </tr>
 
                     <tr>
-                        <td class='chatDoneCell'>
+                        <td
+                            class='chatDoneCell'
+                            onclick={() => { m.route.set('/chat/' + vnode.attrs.activtyId + '__description') }}
+                        >
                             <i class="material-icons activityChat">
                                 chat
                                     </i>
@@ -74,7 +77,10 @@ export const ActivityDescription = {
                         </td>
                     </tr>
                     <tr>
-                        <td class='chatDoneCell'>
+                        <td
+                            class='chatDoneCell'
+                            onclick={() => { m.route.set('/chat/' + vnode.attrs.activtyId + '__explanation') }}
+                        >
                             <i class="material-icons activityChat">
                                 chat
                                     </i>
