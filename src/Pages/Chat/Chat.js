@@ -16,7 +16,7 @@ export const Chat = {
             chatType: '',
             messages: []
         }
-        console.log('chat act id:', vnode.attrs.id)
+
         var refArrayStr = vnode.attrs.id;
         var refArray = refArrayStr.split('__')
 
@@ -54,6 +54,13 @@ export const Chat = {
                 }
             })
 
+    },
+    onremove: function (vnode) {
+        const timestampOut = firebase.firestore.FieldValue.serverTimestamp()
+        console.log(timestampOut)
+        console.log('last time:', timestampOut, vnode.attrs.id)
+        DB.collection('users').doc(store.user.uid)
+            .collection('chats').doc(vnode.attrs.id).set({ lastTime: timestampOut })
     },
     view: function (vnode) {
         var chatNames = {
