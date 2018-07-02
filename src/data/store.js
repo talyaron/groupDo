@@ -1,5 +1,6 @@
 var store = {
     groupActions: [],
+    chats: {},
     groups: [],
     user: {},
     current: {

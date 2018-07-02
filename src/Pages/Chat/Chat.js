@@ -56,11 +56,15 @@ export const Chat = {
 
     },
     onremove: function (vnode) {
-        const timestampOut = firebase.firestore.FieldValue.serverTimestamp()
-        console.log(timestampOut)
-        console.log('last time:', timestampOut, vnode.attrs.id)
+
+        var lastTime = new Date()
+
         DB.collection('users').doc(store.user.uid)
-            .collection('chats').doc(vnode.attrs.id).set({ lastTime: timestampOut })
+            .collection('chats').doc(vnode.attrs.id).set({
+                lastTime: lastTime.getTime(),
+                activityId: vnode.state.activityId,
+                chatType: vnode.state.chatType
+            })
     },
     view: function (vnode) {
         var chatNames = {
@@ -122,7 +126,9 @@ export const Chat = {
 }
 
 function sendMessageToDB(text, vnode) {
-    const timestamp = firebase.firestore.FieldValue.serverTimestamp()
+    const timestamp = firebase.firestore.FieldValue.serverTimestamp();
+    var timeMill = new Date();
+
     if (text.length > 0) {
         //empty input
         var chatText = chatInput.value;
@@ -137,6 +143,7 @@ function sendMessageToDB(text, vnode) {
             .collection(vnode.state.chatType).add({
                 message: textLineBreaks,
                 time: timestamp,
+                timeMill: timeMill.getTime(),
                 userName: store.user.displayName || 'אנונימי',
                 userPhoto: store.user.photoURL || '',
                 userUID: store.user.uid

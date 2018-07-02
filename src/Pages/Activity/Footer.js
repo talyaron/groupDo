@@ -2,6 +2,7 @@ import './Footer.css';
 
 import DB from '../../controls/firebaseConfig';
 import store from '../../data/store';
+import get from 'lodash';
 
 
 var chatCount;
@@ -10,51 +11,20 @@ export const Footer = {
 
         vnode.state = { chats: 0, lastTime: 0 }
 
-        //wait for user to signin
-        function waitForUser() {
-            if (typeof store.user.uid !== "undefined") {
-                console.log('footer:', store.user.uid, vnode.attrs.acitivitId + '__general')
-
-                //get last time in general chat
-                DB.collection('users').doc(store.user.uid)
-                    .collection('chats').doc(vnode.attrs.acitivitId + '__general').get().then((chatLastTimeDB) => {
-                        if (chatLastTimeDB.exists) {
-                            vnode.state.lastTime = chatLastTimeDB.data().lastTime.seconds;
-                            console.log('lastTime:', vnode.state.lastTime)
-
-                            //number of chats in footer
-                            chatCount = DB.collection('groupActions').doc(vnode.attrs.acitivitId)
-                                .collection('general')
-                                // .orderBy('lastTime')
-                                .where("time.seconds", ">", vnode.state.lastTime)
-                                .onSnapshot((messagesDB) => {
-                                    vnode.state.chats = messagesDB.docs.length;
-                                    console.log(vnode.state.chats)
-                                    m.redraw();
-                                })
-                        } else {
-
-                            console.log("No such document!");
-                        }
-                    })
-            }
-            else {
-                console.log('no user yet')
-                setTimeout(waitForUser, 500);
-            }
-        }
-        waitForUser();
-
-
-        // console.log('user..... ', store.user.uid)
-
-
     },
     onupdate: function (vnode) {
 
+        //count number of message in general chat for the footer
+        if (store.chats.hasOwnProperty(vnode.attrs.acitivitId)) {
+            if (store.chats[vnode.attrs.acitivitId].general > 9) {
+                vnode.state.chats = '10+'
+            } else {
+                vnode.state.chats = store.chats[vnode.attrs.acitivitId].general;
+            }
+        }
     },
     onremove: function (vnode) {
-        chatCount();
+        // chatCount();
     },
     view: function (vnode) {
         return (
