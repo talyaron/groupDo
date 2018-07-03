@@ -114,7 +114,6 @@ export const Chat = {
                                     <textarea
                                         id="chatInput"
                                         class="chatInput"
-                                        autofocus
                                         onkeyup={(e) => checkShiftEnter(e, chatInput.value, vnode)}
                                     >
                                     </textarea>
