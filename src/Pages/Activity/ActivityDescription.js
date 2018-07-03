@@ -58,7 +58,7 @@ export const ActivityDescription = {
                         <td class='simpleText' colspan="3" id='generalDescription'>{vnode.attrs.description}</td>
                     </tr>
 
-                    <tr>
+                    <tr class='pageRow'>
                         <td class='chatDoneCell' colspan='3'>
                             <div class='chatInfo' onclick={() => { m.route.set('/chat/' + vnode.attrs.activtyId + '__description') }}>
                                 <i class="material-icons activityChat">
@@ -102,7 +102,7 @@ export const ActivityDescription = {
                             >עדכון</div> : <div />}
                         </td>
                     </tr>
-                    <tr>
+                    <tr class='pageRow'>
                         <td class='chatDoneCell' colspan='3'>
                             <div class='chatInfo' onclick={() => { m.route.set('/chat/' + vnode.attrs.activtyId + '__explanation') }}>
                                 <i class="material-icons activityChat">
@@ -129,7 +129,7 @@ export const ActivityDescription = {
                     <tr class='descriptionRow'>
                         <td class='simpleText'>10/2/18</td>
                     </tr>
-                    <tr>
+                    <tr class='pageRow'>
                         <td class='chatDoneCell' colspan='3'>
                             <div class='chatInfo' onclick={() => { m.route.set('/chat/' + vnode.attrs.activtyId + '__date') }}>
                                 <i class="material-icons activityChat">

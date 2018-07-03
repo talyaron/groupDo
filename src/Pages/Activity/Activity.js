@@ -163,7 +163,7 @@ export const Activity = {
                         <div class='labels'>מצרכים</div>
                         <div class='resourceCards'>
                             <table class='resourceCardTable'>
-                                <tr>
+                                <tr class='pageRow'>
                                     <th></th>
                                     <th>שם</th>
                                     <th class='resourceAmount'>כמות</th>
@@ -231,7 +231,7 @@ export const Activity = {
                                     )
                                 })}
                                 {(vnode.state.addResource) ?
-                                    <tr>
+                                    <tr class='pageRow'>
                                         <td></td>
                                         <td>
                                             <input type='text' autofocus placeholder='שם הפריט' id='rsName' />
@@ -239,24 +239,30 @@ export const Activity = {
                                         <td>
                                             <input type='number' placeholder='כמות' id='rsAmount' />
                                         </td>
-                                        <td class='confirmResource'
+                                        <td
                                             onclick={() => { addResourceToDB(vnode); vnode.state.addResource = false }}
                                         >
-                                            הוספה
+                                            <div class='waves-effect waves-light btn'>
+                                                הוספה
+                                                    </div>
                                         </td>
                                         <td
-                                            class='cancelResource'
+
                                             onclick={() => { cancelResource(); vnode.state.addResource = false }}
                                         >
-                                            ביטול
+                                            <div class='waves-effect waves-light btn red'>
+                                                ביטול
+                                                    </div>
                                         </td>
                                     </tr>
                                     :
-                                    <tr></tr>
+                                    <tr class='pageRow'></tr>
                                 }
-                                <tr>
+                                <tr class='pageRow'>
+                                    <td>
+                                    </td>
                                     <td
-                                        colspan="2"
+                                        colspan="3"
                                         class='addResource'
                                         onclick={() => { toggleAddResource(vnode) }}
 

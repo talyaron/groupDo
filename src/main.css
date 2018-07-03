@@ -2,7 +2,7 @@
     --mainColorStrong: #45509e;
     --mainTextStrong: white;
     --mainColorMiddle: #3a4383;
-    --simpleTextDark: rgba(0, 0, 0, 0.68);
+    --simpleTextDark: rgba(0, 0, 0, 0.719);
     --secondTextStrong: #ffffffad;
 }
 
@@ -49,6 +49,7 @@ body {
     font-size: 1.2rem;
     font-weight: 600;
     text-align: right;
+    color: #000000b3;
 }
 
 .simpleText {

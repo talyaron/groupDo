@@ -2,6 +2,10 @@ th {
     padding: 0px 3px 0px 3px !important;
 }
 
+.pageRow {
+    border: none;
+}
+
 .activityHeader {
     background: var(--mainColorStrong);
 }
@@ -57,7 +61,7 @@ th {
 .responsibleFalse {}
 
 .addResource {
-    background: blue;
+    background: #1d7b72;
     color: white;
     text-align: center !important;
     border-radius: 4px;
@@ -75,7 +79,7 @@ th {
 }
 
 .confirmResource {
-    background: green;
+    background: #26a69a;
     color: white;
     cursor: pointer;
     user-select: none;
@@ -83,7 +87,7 @@ th {
 }
 
 .cancelResource {
-    background: red;
+    background: #ee6e73;
     color: white;
     cursor: pointer;
     user-select: none;
@@ -151,7 +155,7 @@ th {
 }
 
 .activityChat {
-    color: #80808073;
+    color: #8080803d;
 }
 
 .chatDone {
