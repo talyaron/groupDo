@@ -36,8 +36,14 @@ firebase.auth().onAuthStateChanged(function (user) {
                         var chatObj = {};
                         var activityId = chatDB.data().activityId;
                         var chatType = chatDB.data().chatType;
-                        chatObj[chatType] = lastMessagesDB.size;
+                        if (lastMessagesDB.size > 9) {
+                            chatObj[chatType] = '10+'
+                        } else {
+                            chatObj[chatType] = lastMessagesDB.size;
+                        }
+
                         store.chats[activityId] = chatObj
+                        console.dir(store.chats)
                         m.redraw();
                     })
             })

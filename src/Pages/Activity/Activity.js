@@ -145,13 +145,12 @@ export const Activity = {
                             m.route.set('/starts')
                         }}
                     >תכל'ס: עשיה קהילתית</div>
-                    <table><tr><td class='activityHeaderTd'>
-                        פעילות: <span>{vnode.state.name}</span>
-                    </td></tr></table>
+
                 </div>
                 <div class='container'>
-                    <div class='panel panelActivity'>
-                        <ApprovalBar />
+                    <div class='panelActivity'>
+                        <h5><b>{vnode.state.name}</b></h5>
+                        {/* <ApprovalBar /> */}
                         <ActivityDescription
                             description={vnode.state.description}
                             fullExplanation={vnode.state.fullExplanation}

@@ -38,8 +38,9 @@ th {
 
 .panelActivity {
     max-width: 550px;
-    /* margin: auto; */
+    margin: auto;
     margin-bottom: 60px;
+    margin-top: 70px;
 }
 
 .responsible {
@@ -50,7 +51,7 @@ th {
 }
 
 .responsibleTrue {
-    background: #4cf14c;
+    /* background: #4cf14c; */
 }
 
 .responsibleFalse {}
@@ -187,7 +188,13 @@ th {
 .chatsCounter {
     position: relative;
     width: 20px;
-    top: -35px;
+    top: -30px;
     height: 0px;
-    left: -20px;
+    left: -50%;
+    transform: translate(185%, 50%);
+}
+
+.chatInfo {
+    float: left;
+    margin-right: 46px;
 }

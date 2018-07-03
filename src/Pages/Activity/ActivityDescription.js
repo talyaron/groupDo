@@ -44,6 +44,13 @@ export const ActivityDescription = {
             <div>
                 <p><span class='labels'>יזמ/ית</span>: <span class='simpleText'>{vnode.attrs.creator.name}</span></p>
                 <table>
+                    <tr class='descriptionRow'>
+                        <th class='labels'>מארגנים</th><th></th>
+                    </tr>
+                    <Volunteers
+                        volunteers={vnode.attrs.volunteers}
+                        activtyId={vnode.attrs.activtyId}
+                    />
                     <tr class='descriptionRow' colspan="3">
                         <th class='labels'>הסבר כללי</th>
                     </tr>
@@ -52,25 +59,24 @@ export const ActivityDescription = {
                     </tr>
 
                     <tr>
-                        <td
-                            class='chatDoneCell'
-                            onclick={() => { m.route.set('/chat/' + vnode.attrs.activtyId + '__description') }}
-                        >
-                            <i class="material-icons activityChat">
-                                chat
+                        <td class='chatDoneCell' colspan='3'>
+                            <div class='chatInfo' onclick={() => { m.route.set('/chat/' + vnode.attrs.activtyId + '__description') }}>
+                                <i class="material-icons activityChat">
+                                    chat
                                     </i>
-                            <div class='chatsCounter'>{vnode.state.chats.description}</div>
-                        </td>
-                        <td class='chatDoneCell'>
-                            <i class="material-icons activityChat">
-                                check_circle_outline
+                                <div class='chatsCounter'>{vnode.state.chats.description}</div>
+                            </div>
+                            <div class='chatInfo'>
+                                <i class="material-icons activityChat">
+                                    check_circle_outline
                                     </i>
-                        </td>
-                        <td class='chatDoneCell'
-                            onclick={() => { vnode.attrs.modalCritic.open() }}>
-                            <i class="material-icons activityChat">
-                                warning
+                            </div>
+                            <div class='chatInfo' onclick={() => { vnode.attrs.modalCritic.open() }}>
+                                <i class="material-icons activityChat">
+                                    warning
                                     </i>
+                            </div>
+
                         </td>
                     </tr>
                     <tr class='descriptionRow'>
@@ -97,34 +103,26 @@ export const ActivityDescription = {
                         </td>
                     </tr>
                     <tr>
-                        <td
-                            class='chatDoneCell'
-                            onclick={() => { m.route.set('/chat/' + vnode.attrs.activtyId + '__explanation') }}
-                        >
-                            <i class="material-icons activityChat">
-                                chat
+                        <td class='chatDoneCell' colspan='3'>
+                            <div class='chatInfo' onclick={() => { m.route.set('/chat/' + vnode.attrs.activtyId + '__explanation') }}>
+                                <i class="material-icons activityChat">
+                                    chat
                                     </i>
-                            <div class='chatsCounter'>{vnode.state.chats.explanation}</div>
-                        </td>
-                        <td class='chatDoneCell'>
-                            <i class="material-icons activityChat">
-                                check_circle_outline
+                                <div class='chatsCounter'>{vnode.state.chats.explanation}</div>
+                            </div>
+                            <div class='chatInfo'>
+                                <i class="material-icons activityChat">
+                                    check_circle_outline
                                     </i>
-                        </td>
-                        <td class='chatDoneCell'>
-                            <i class="material-icons activityChat">
-                                warning
+                            </div>
+                            <div class='chatInfo' onclick={() => { vnode.attrs.modalCritic.open() }}>
+                                <i class="material-icons activityChat">
+                                    warning
                                     </i>
+                            </div>
                         </td>
 
                     </tr>
-                    <tr class='descriptionRow'>
-                        <th class='labels'>מתנדבים</th><th></th>
-                    </tr>
-                    <Volunteers
-                        volunteers={vnode.attrs.volunteers}
-                        activtyId={vnode.attrs.activtyId}
-                    />
                     <tr class='descriptionRow'>
                         <th class='labels'>תאריך</th><th></th>
                     </tr>
@@ -132,20 +130,23 @@ export const ActivityDescription = {
                         <td class='simpleText'>10/2/18</td>
                     </tr>
                     <tr>
-                        <td class='chatDoneCell'>
-                            <i class="material-icons activityChat">
-                                chat
+                        <td class='chatDoneCell' colspan='3'>
+                            <div class='chatInfo' onclick={() => { m.route.set('/chat/' + vnode.attrs.activtyId + '__date') }}>
+                                <i class="material-icons activityChat">
+                                    chat
                                     </i>
-                        </td>
-                        <td class='chatDoneCell'>
-                            <i class="material-icons activityChat">
-                                check_circle_outline
+                                <div class='chatsCounter'>{vnode.state.chats.date}</div>
+                            </div>
+                            <div class='chatInfo'>
+                                <i class="material-icons activityChat">
+                                    check_circle_outline
                                     </i>
-                        </td>
-                        <td class='chatDoneCell'>
-                            <i class="material-icons activityChat">
-                                warning
+                            </div>
+                            <div class='chatInfo' onclick={() => { vnode.attrs.modalCritic.open() }}>
+                                <i class="material-icons activityChat">
+                                    warning
                                     </i>
+                            </div>
                         </td>
                     </tr>
                 </table >

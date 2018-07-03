@@ -6,7 +6,11 @@ function listenToCounter(vnode, counterName) {
         var unsubscribe = DB.collection('groupActions').doc(vnode.attrs.activtyId)
             .collection(counterName).orderBy('time').limit(10)
             .onSnapshot(function (chatsDB) {
-                vnode.state.chats[counterName] = chatsDB.size
+                if (chatsDB.size > 9) {
+                    vnode.state.chats[counterName] = '10+'
+                } else {
+                    vnode.state.chats[counterName] = chatsDB.size
+                }
                 m.redraw();
             })
         return unsubscribe;
