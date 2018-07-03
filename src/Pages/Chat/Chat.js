@@ -18,8 +18,8 @@ export const Chat = {
             messages: []
         }
 
-        var refArrayStr = vnode.attrs.id;
-        var refArray = refArrayStr.split('__')
+        var chatURL = vnode.attrs.id;
+        var chatURLArray = chatURL.split('__')
 
         const typeOfChatNameObj = {
             general: 'שיחה כללית',
@@ -27,8 +27,8 @@ export const Chat = {
             explanation: 'הסבר על הפעילות'
         }
 
-        vnode.state.activityId = refArray[0];
-        vnode.state.chatType = refArray[1];
+        vnode.state.activityId = chatURLArray[0];
+        vnode.state.chatType = chatURLArray[1];
         vnode.state.typeOfChatName = typeOfChatNameObj[vnode.state.chatType] || 'כללי'
 
 
@@ -66,8 +66,9 @@ export const Chat = {
     },
     onremove: function (vnode) {
 
-        var lastTime = new Date()
+        //for the new-chat-messages counters, this set the last time user was in this chat
 
+        var lastTime = new Date();
         DB.collection('users').doc(store.user.uid)
             .collection('chats').doc(vnode.attrs.id).set({
                 lastTime: lastTime.getTime(),

@@ -1,6 +1,6 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
-import set from 'lodash';
+
 
 import DB from './firebaseConfig';
 

@@ -2,6 +2,7 @@ import './Activity.css';
 import DB from '../../controls/firebaseConfig';
 import store from '../../data/store';
 
+import listenToCounter from './listenToCounter';
 import { Volunteers } from './Volunteers';
 
 export const ActivityDescription = {
@@ -17,13 +18,12 @@ export const ActivityDescription = {
             }
         }
         //get chats counter
-        DB.collection('groupActions').doc(vnode.attrs.activtyId)
-            .collection('chatDescription').onSnapshot(function (chatsDB) {
-                vnode.state.descriptionChatCounter = chatsDB.size
-                m.redraw();
-            })
+        vnode.state.unsubscribeDescription = listenToCounter(vnode, 'description');
+        vnode.state.unsubscribeExplanation = listenToCounter(vnode, 'explanation');
     },
     onupdate: function (vnode) {
+
+        //get counters from store (store.chats)
         if (store.chats.hasOwnProperty(vnode.attrs.activtyId)) {
             if (store.chats[vnode.attrs.activtyId].hasOwnProperty('explanation')) {
                 vnode.state.chats.explanation = store.chats[vnode.attrs.activtyId].explanation;
@@ -32,6 +32,11 @@ export const ActivityDescription = {
                 vnode.state.chats.description = store.chats[vnode.attrs.activtyId].description;
             }
         }
+    },
+    onremove: function (vnode) {
+        vnode.state.unsubscribeDescription();
+        vnode.state.unsubscribeExplanation();
+
     },
     view: function (vnode) {
 
